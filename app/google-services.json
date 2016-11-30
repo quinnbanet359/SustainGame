@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "686495728825",
+    "firebase_url": "https://sustaingame-71152.firebaseio.com",
+    "project_id": "sustaingame-71152",
+    "storage_bucket": "sustaingame-71152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686495728825:android:3ded96960ce90c5b",
+        "android_client_info": {
+          "package_name": "com.quinnbanet.sustaingame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686495728825-kgc55jhfghnhrapfp4bk0aqs74spjtkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quinnbanet.sustaingame",
+            "certificate_hash": "FD1FE8E87ACBA0876636E79567B45343A55CE17D"
+          }
+        },
+        {
+          "client_id": "686495728825-gpdduh57r00vi0n7g0mtud9ooa126j2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQJeL9ZIThtz2SDSSfNG9knMPQoEkgFaQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686495728825-gpdduh57r00vi0n7g0mtud9ooa126j2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

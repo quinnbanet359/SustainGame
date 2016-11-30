@@ -21,6 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupWindow;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 public class MainActivity extends AppCompatActivity {
     public static final int locationFeedback = 0;
     public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -51,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
     // Ask User Permission for Device Location
     askPermission();
     }

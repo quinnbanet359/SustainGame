@@ -2,6 +2,7 @@ package com.quinnbanet.sustaingame;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,6 +23,29 @@ import android.widget.PopupWindow;
 
 public class MainActivity extends AppCompatActivity {
     public static final int locationFeedback = 0;
+    public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
+    public String granted = "granted";
+    public String denied = "denied";
+    public String permissionStatus = granted;
+    public int timesLaunched = 0;
+
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        //Every time app is Launched or Resumed Check Permissions
+        checkPermission();
+        if (permissionStatus == granted) {
+            Log.d("testabc123","resume granted");
+            //do app things
+            setContentView(R.layout.activity_main);
+        }
+        else {
+            Log.d("testabc123","resume denied");
+            //stop app things
+            setContentView(R.layout.permission_denied);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +80,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void askPermission() {
         // Here, this is the current activity
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
@@ -93,13 +116,16 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     // permission was granted, yay!
-                    Log.d("test", "granted");
+                    Log.d("test123", "granted");
 
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    showAlert();
-                    Log.d("test", "denied");
+                    Log.d("test123", "denied");
+                        // while permission denied, bring up "permission denied" view
+                        Log.d("test123","got to while loop");
+                        showAlert();
+                        setContentView(R.layout.permission_denied);
                 }
                 return;
             }
@@ -145,4 +171,27 @@ public class MainActivity extends AppCompatActivity {
         // show it
         alertDialog.show();
     }
+
+    public void checkPermission() {
+
+        if (timesLaunched > 0) {
+            Log.d("testabc123","times launched > 0");
+            // user has launched before, start checking
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                // permission denied
+                permissionStatus = denied;
+
+            } else {
+                // permission granted
+                permissionStatus = granted;
+            }
+        }
+        else {
+            //user never launched app, increase counter
+            timesLaunched++;
+            Log.d("testabc123","timesLauchedCount:" + timesLaunched);
+        }
+
+    }
+
 }

@@ -21,10 +21,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupWindow;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class MainActivity extends AppCompatActivity {
+
     public static final int locationFeedback = 0;
     public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
     public String granted = "granted";
@@ -51,15 +59,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
-    // Ask User Permission for Device Location
-    askPermission();
     }
-
 
 
     @Override

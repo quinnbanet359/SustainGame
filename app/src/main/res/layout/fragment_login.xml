@@ -2,13 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Teal"
     tools:context="com.quinnbanet.sustaingame.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Login" />
 
 
     <com.facebook.login.widget.LoginButton
@@ -16,7 +13,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_gravity="center_vertical"
+        android:layout_below="@id/title"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Sustain Game"
+        android:textColor="#FFFFFF"
+        android:textSize="26pt"
+        android:fontFamily=""
+
+        />
 
 </FrameLayout>

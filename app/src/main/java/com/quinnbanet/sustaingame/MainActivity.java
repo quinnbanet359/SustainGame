@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +27,12 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.LoginResult;
+import com.facebook.login.*;
 import com.facebook.login.widget.LoginButton;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity{
 
     public static final int locationFeedback = 0;
     public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     public String permissionStatus = granted;
     public int timesLaunched = 0;
 
+    CallbackManager callbackManager;
+
 
     @Override
     protected void onPostResume() {
@@ -47,12 +50,11 @@ public class MainActivity extends AppCompatActivity {
         //Every time app is Launched or Resumed Check Permissions
         checkPermission();
         if (permissionStatus == granted) {
-            Log.d("testabc123","resume granted");
+            Log.d("testabc123", "resume granted");
             //do app things
             setContentView(R.layout.activity_main);
-        }
-        else {
-            Log.d("testabc123","resume denied");
+        } else {
+            Log.d("testabc123", "resume denied");
             //stop app things
             setContentView(R.layout.permission_denied);
         }
@@ -61,8 +63,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            ...
+        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
     public void askPermission() {
         // Here, this is the current activity
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
@@ -111,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

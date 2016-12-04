@@ -1,6 +1,7 @@
 package com.quinnbanet.sustaingame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -29,9 +30,8 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class LoginFragment extends Fragment {
 
 
-
-
     private OnFragmentInteractionListener mListener;
+    CallbackManager callbackManager;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -58,32 +58,24 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-                FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
     }
 
-    /*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login,container,false);
-        return inflater.inflate(R.layout.fragment_login, container, false);
-    } */
-
     @Override
-    public void onViewCreated(View view , Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public View onCreateView(
+            LayoutInflater inflater,
+            ViewGroup container,
+            Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
-        loginButton.setReadPermissions("user_friends");
-        loginButton.setReadPermissions("user_location");
-        loginButton.setReadPermissions("publish_actions");
-
         // If using in a fragment
         loginButton.setFragment(this);
         // Other app specific specialization
-        // Callback registration
 
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
@@ -99,9 +91,8 @@ public class LoginFragment extends Fragment {
                 // App code
             }
         });
-
-
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -109,7 +100,6 @@ public class LoginFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -126,7 +116,6 @@ public class LoginFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

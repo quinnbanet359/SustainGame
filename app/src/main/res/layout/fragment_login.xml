@@ -1,31 +1,39 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Teal"
-    tools:context="com.quinnbanet.sustaingame.LoginFragment">
+    tools:context="com.quinnbanet.sustaingame.LoginFragment"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sustain Game"
+        android:textColor="#FFFFFF"
+        android:textSize="26pt"
+        android:fontFamily="sans-serif"
+        />
+
+    <ImageView
+        android:id="@+id/light_bulb"
+        android:layout_width="241dp"
+        android:layout_height="314dp"
+        android:src="@mipmap/light_bulb"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/title"
+        android:scaleType="fitCenter" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_gravity="center_vertical"
-        android:layout_below="@id/title"
+        android:layout_gravity="center"
+        android:layout_below="@id/light_bulb"
         />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sustain Game"
-        android:textColor="#FFFFFF"
-        android:textSize="26pt"
-        android:fontFamily=""
-
-        />
-
-</FrameLayout>
+</LinearLayout>

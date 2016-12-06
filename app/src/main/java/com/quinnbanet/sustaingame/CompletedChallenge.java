@@ -1,7 +1,5 @@
 package com.quinnbanet.sustaingame;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,18 +19,18 @@ public class CompletedChallenge extends Fragment {
     DatabaseReference mRef = firebaseDatabase.getReference().child("teams");
 
     public CompletedChallenge() {
-        //required empty contructor
+        //required empty constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
 
-        ListView lv = (ListView) view.findViewById(R.id.ListView);
-        ListAdapter la = new FirebaseListAdapter<Team>(getActivity(),Team.class, R.layout.team_item_layout, mRef) {
+        ListView lv = (ListView) view.findViewById(R.id.completedList);
+        ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(),Challenges.class, R.layout.challenges_item_layout, mRef) {
             @Override
-            protected void populateView(View v, Team model, int position) {
-                TextView tv = (TextView) v.findViewById(R.id.teamName);
+            protected void populateView(View v, Challenges model, int position) {
+                TextView tv = (TextView) v.findViewById(R.id.challengeName);
                 tv.setText(model.getName());
             }
         };

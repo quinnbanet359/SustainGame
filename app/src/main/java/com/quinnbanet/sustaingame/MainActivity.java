@@ -1,6 +1,7 @@
 package com.quinnbanet.sustaingame;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.LauncherApps;
@@ -12,9 +13,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
 
 
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
@@ -68,20 +74,21 @@ public class MainActivity extends AppCompatActivity{
         } else {
             Log.d("testabc123", "resume denied");
             //stop app things
-           // setContentView(R.layout.permission_denied);
+            setContentView(R.layout.permission_denied);
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        askPermission();
+        askPermission(); //ask user for location permissions upon first app launch
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
         // ...
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -106,10 +113,12 @@ public class MainActivity extends AppCompatActivity{
         callbackManager = CallbackManager.Factory.create();
 
 
-        info = (TextView)findViewById(R.id.info);
+        //info = (TextView)findViewById(R.id.info);
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.setReadPermissions("user_friends");
+        loginButton.setReadPermissions("public_profile");
+        loginButton.setReadPermissions("email");
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -193,6 +202,7 @@ public class MainActivity extends AppCompatActivity{
                 // sees the explanation, try again to request the permission.
 
             } else {
+                showPreAlert(); //tell user to accept permission dialog upon first app launch
 
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
@@ -256,6 +266,31 @@ public class MainActivity extends AppCompatActivity{
                     }
                 })
                 .setNegativeButton("Stop",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+    public void showPreAlert() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        // allow is enclosed in quotes, done in Java with the use of "\\"
+        String message = "Please hit \"Allow\" when you are promoted";
+        // set title
+        alertDialogBuilder.setTitle("We need your location");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Will Do",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         // if this button is clicked, just close
                         // the dialog box and do nothing

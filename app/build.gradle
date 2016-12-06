@@ -37,5 +37,6 @@ dependencies {
     compile 'com.firebaseui:firebase-ui:0.6.0'
     compile 'com.google.firebase:firebase-auth:9.6.0'
     compile 'com.google.android.gms:play-services-gcm:9.6.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -7,15 +7,17 @@
 
     <TextView
         android:text="Your Completed Challanges"
-        android:layout_width="wrap_content"
+        android:layout_width="433dp"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:background="@color/Teal" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="255dp"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:id="@+id/completedList"/>
 
 </FrameLayout>

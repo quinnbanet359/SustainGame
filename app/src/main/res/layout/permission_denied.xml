@@ -1,15 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#18FFFF">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/Teal"
+tools:context="com.quinnbanet.sustaingame.MainActivity"
+android:weightSum="1">
+
+
+<TextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sustain Game"
+    android:textColor="#FFFFFF"
+    android:textSize="26pt"
+    android:fontFamily="sans-serif"
+    />
+
+<ImageView
+    android:id="@+id/light_bulb"
+    android:layout_width="241dp"
+    android:layout_height="314dp"
+    android:src="@drawable/lightbulb"
+    android:layout_gravity="center_horizontal"
+    android:layout_below="@id/title"
+    android:scaleType="fitCenter" />
 
     <TextView
         android:text="Sorry, We need your location to use this application. Please go to Settings > Apps >  SustainGame > Permissions and enable location sharing "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="234dp"
-        android:id="@+id/textView"/>
-</RelativeLayout>
+        android:id="@+id/textView"
+        android:layout_below="@id/light_bulb"
+        android:layout_weight="1.08"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:gravity="center_horizontal"
+        tools:textColor="@color/colorAccent" />
+
+</LinearLayout>

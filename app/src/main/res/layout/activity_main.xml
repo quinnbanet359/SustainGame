@@ -1,17 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.quinnbanet.sustaingame.MainActivity">
+    android:background="@color/Teal"
+    tools:context="com.quinnbanet.sustaingame.MainActivity"
+    android:weightSum="1">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:text="Sustain Game"
+        android:textColor="#FFFFFF"
+        android:textSize="26pt"
+        android:fontFamily="sans-serif"
+        />
 
-    </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:id="@+id/light_bulb"
+        android:layout_width="241dp"
+        android:layout_height="314dp"
+        android:src="@drawable/lightbulb"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/title"
+        android:scaleType="fitCenter" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@id/light_bulb" />
+
+</LinearLayout>

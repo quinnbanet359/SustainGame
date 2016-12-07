@@ -34,4 +34,12 @@
             android:layout_gravity="center"
             android:layout_below="@id/light_bulb" />
 
+    <Button
+        android:text="skip login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:onClick="iwasclicked"/>
+
+
 </LinearLayout>

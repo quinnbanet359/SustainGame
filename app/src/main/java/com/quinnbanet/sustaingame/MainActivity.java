@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.LauncherApps;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -20,14 +21,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
     // Firebase variables
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
 
 
 
@@ -84,8 +88,8 @@ public class MainActivity extends AppCompatActivity{
         askPermission(); //ask user for location permissions upon first app launch
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity{
                     // User is signed in
 
                     Log.d("FBSignInTAG", "onAuthStateChanged:signed_in:" + user.getUid());
+                    //Log.d("FBSignInTAG", "onAuthStateChanged:signed_in:" + user.getEmail());
                 } else {
                     // User is signed out
                     Log.d("FBSignInTAG", "onAuthStateChanged:signed_out");
@@ -111,7 +116,6 @@ public class MainActivity extends AppCompatActivity{
 
 
         callbackManager = CallbackManager.Factory.create();
-
 
         //info = (TextView)findViewById(R.id.info);
 
@@ -350,5 +354,26 @@ public class MainActivity extends AppCompatActivity{
                     }
                 });
     }
+public void iwasclicked(View view) {
+    Intent intent = new Intent(MainActivity.this, AuthDashboard.class);
+    startActivity(intent);
+}
+public void LoginWatcher() {
+    // call with:         LoginWatcher(); //get current user state and send user to proper activity
+        Profile currentUser = Profile.getCurrentProfile();
 
+        //if user is logged out, send them to MainActivity for FB Login
+        if(currentUser.getName().length() == 0)
+        {
+            Log.d("blahblah", "first if");
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        }else
+        //user is logged in, send them to AuthDashboard
+        {
+            Log.d("blahblah", "else");
+            Intent intent = new Intent(MainActivity.this,AuthDashboard.class);
+            startActivity(intent);
+        }
+    }
 }

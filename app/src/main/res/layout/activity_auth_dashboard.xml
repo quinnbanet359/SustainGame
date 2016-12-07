@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.quinnbanet.sustaingame.AuthDashboard">
 
+    <!--<include layout="@layout/current_main"/>-->
     <include layout="@layout/completed_main" />
 
-    <include layout="@layout/fragment_current_challenge"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabBase"

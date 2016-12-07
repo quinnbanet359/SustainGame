@@ -1,6 +1,7 @@
 package com.quinnbanet.sustaingame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -20,8 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class CompletedChallenge extends Fragment {
+    View view;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = firebaseDatabase.getReference().child("Teams");
+    DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
 
     public CompletedChallenge() {
         //required empty constructor
@@ -29,7 +31,7 @@ public class CompletedChallenge extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
+         view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
 
         ListView lv = (ListView) view.findViewById(R.id.completedList);
         ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(),Challenges.class, R.layout.challenges_item_layout, mRef) {
@@ -44,13 +46,8 @@ public class CompletedChallenge extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 //send user to new activity upon challenge click
-               // Toast toast = Toast.makeText(this, (String)arg0.getItemAtPosition(position), Toast.LENGTH_SHORT);
-                //toast.show();
-
-                //Snackbar.make(R.layout.activity_auth_dashboard, "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
-                  //      .setAction("Undo", mOnClickListener)
-                   //     .setActionTextColor(Color.RED)
-                    //    .show();
+                TextView text = (TextView) view.findViewById(R.id.completedListTitle);
+                text.setText("item"+ position + "was clicked");
             }
         });
         lv.setAdapter(la);

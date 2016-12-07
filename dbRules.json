@@ -1,52 +1,58 @@
 {
-  "Teams" : 
+  "Challenges" : 
  {
   	"897" : {
   	"id" : 124,	
     "startDate" : "12/25/16",
-    "notes" : "",
+    "progress" : "",
     "name" : "Recycle 10 Items",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     },
     "898" : {
   	"id" : 123,	
     "startDate" : "12/25/16",
-    "notes" : "",
+    "progress" : "",
     "name" : "Tell 10 people about this app",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     },
     "899" : {
   	"id" : 125,	
     "startDate" : "12/25/16",
-    "notes" : "",
+    "progress" : "",
     "name" : "Invite FB Friends list to app",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     },
     "900" : {
   	"id" : 126,	
     "startDate" : "12/25/16",
-    "notes" : "",
+    "progress" : "",
     "name" : "Discover 5 sustainabilty clubs",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     },
     "901" : {
   	"id" : 127,	
     "startDate" : "12/25/16",
-    "notes" : "new challange",
+    "progress" : "new challange",
     "name" : "",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     } ,
     "902" : {
   	"id" : 128,	
     "startDate" : "12/25/16",
-    "notes" : "",
+    "progress" : "",
     "name" : "i ran out of ideas",
     "picture" : "some url",
+    "createdBy": "User1",
     "endDate" : "1/11/17"
     }    
   }

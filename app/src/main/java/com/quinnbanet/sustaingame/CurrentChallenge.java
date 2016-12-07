@@ -28,10 +28,10 @@ public class CurrentChallenge extends Fragment {
         View view = inflater.inflate(R.layout.fragment_current_challenge, container, false);
 
         ListView lv = (ListView) view.findViewById(R.id.currentList);
-        ListAdapter la = new FirebaseListAdapter<Challenges1>(getActivity(),Challenges1.class, R.layout.challenges_item_layout1, mRef) {
+        ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(),Challenges.class, R.layout.challenges_item_layout, mRef) {
             @Override
-            protected void populateView(View v, Challenges1 model, int position) {
-                TextView tv = (TextView) v.findViewById(R.id.challengeName1);
+            protected void populateView(View v, Challenges model, int position) {
+                TextView tv = (TextView) v.findViewById(R.id.challengeName);
                 tv.setText(model.getName());
             }
         };

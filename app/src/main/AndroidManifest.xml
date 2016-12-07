@@ -41,7 +41,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".AuthDashboard"></activity>
+        <activity android:name=".AuthDashboard" />
+        <activity
+            android:name=".ChallengesDetails"
+            android:label="@string/title_activity_challenges_details"
+            android:parentActivityName=".AuthDashboard"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.quinnbanet.sustaingame.AuthDashboard" />
+        </activity>
     </application>
 
 </manifest>

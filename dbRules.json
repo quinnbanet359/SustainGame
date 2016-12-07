@@ -1,53 +1,53 @@
 {
-  "Challenges" : 
+  "Teams" : 
  {
   	"897" : {
   	"id" : 124,	
-    "loses" : 1,
-    "mascot" : "Buckeyes",
-    "name" : "Ohio State",
+    "startDate" : "12/25/16",
+    "notes" : "",
+    "name" : "Recycle 10 Items",
     "picture" : "some url",
-    "wins" : 11
+    "endDate" : "1/11/17"
     },
     "898" : {
   	"id" : 123,	
-    "loses" : 0,
-    "mascot" : "Crimson Tide",
-    "name" : "Alabama",
+    "startDate" : "12/25/16",
+    "notes" : "",
+    "name" : "Tell 10 people about this app",
     "picture" : "some url",
-    "wins" : 12
+    "endDate" : "1/11/17"
     },
     "899" : {
   	"id" : 125,	
-    "loses" : 2,
-    "mascot" : "Wolverines",
-    "name" : "Michigan",
+    "startDate" : "12/25/16",
+    "notes" : "",
+    "name" : "Invite FB Friends list to app",
     "picture" : "some url",
-    "wins" : 10
+    "endDate" : "1/11/17"
     },
     "900" : {
   	"id" : 126,	
-    "loses" : 1,
-    "mascot" : "Tigers",
-    "name" : "Clemson",
+    "startDate" : "12/25/16",
+    "notes" : "",
+    "name" : "Discover 5 sustainabilty clubs",
     "picture" : "some url",
-    "wins" : 11
+    "endDate" : "1/11/17"
     },
     "901" : {
   	"id" : 127,	
-    "loses" : 1,
-    "mascot" : "Huskies",
-    "name" : "Washington",
+    "startDate" : "12/25/16",
+    "notes" : "new challange",
+    "name" : "",
     "picture" : "some url",
-    "wins" : 11
+    "endDate" : "1/11/17"
     } ,
     "902" : {
   	"id" : 128,	
-    "loses" : 1,
-    "mascot" : "Badgers",
-    "name" : "Wisconsin",
+    "startDate" : "12/25/16",
+    "notes" : "",
+    "name" : "i ran out of ideas",
     "picture" : "some url",
-    "wins" : 11
+    "endDate" : "1/11/17"
     }    
   }
 }

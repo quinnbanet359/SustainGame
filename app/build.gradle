@@ -38,5 +38,6 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:9.6.0'
     compile 'com.google.android.gms:play-services-gcm:9.6.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
 }
 apply plugin: 'com.google.gms.google-services'

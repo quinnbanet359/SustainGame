@@ -6,21 +6,23 @@
     android:layout_height="match_parent"
     tools:context="com.quinnbanet.sustaingame.AuthDashboard">
 
+    <include layout="@layout/completed_main" />
+
+    <include layout="@layout/fragment_current_challenge"/>
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabBase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:onClick="fabBase"
         android:tint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add"
         app:fabSize="normal"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="12dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
-    <include layout="@layout/content_main" />
 
 </RelativeLayout>

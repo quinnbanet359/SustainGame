@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity{
                     // User is signed in
 
                     Log.d("FBSignInTAG", "onAuthStateChanged:signed_in:" + user.getUid());
-                    //Log.d("FBSignInTAG", "onAuthStateChanged:signed_in:" + user.getEmail());
+                    Log.d("FBSignInTAG", "onAuthStateChanged:signed_in:" + user.getEmail());
                 } else {
                     // User is signed out
                     Log.d("FBSignInTAG", "onAuthStateChanged:signed_out");

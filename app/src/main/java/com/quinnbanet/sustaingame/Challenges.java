@@ -6,11 +6,12 @@ package com.quinnbanet.sustaingame;
 
 public class Challenges {
     private long id;
-    private long loses;
-    private String mascot;
+    private String startDate;
+    private String progress;
     private String name;
     private String picture;
-    private long wins;
+    private String createdBy;
+    private String endDate;
 
     public Challenges(){}
 
@@ -22,20 +23,20 @@ public class Challenges {
         this.id = id;
     }
 
-    public long getLoses() {
-        return loses;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setLoses(long loses) {
-        this.loses = loses;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getMascot() {
-        return mascot;
+    public String getProgress() {
+        return progress;
     }
 
-    public void setMascot(String mascot) {
-        this.mascot = mascot;
+    public void setProgress(String progress) {
+        this.progress = progress;
     }
 
     public String getName() {
@@ -54,36 +55,54 @@ public class Challenges {
         this.picture = picture;
     }
 
-    public long getWins() {
-        return wins;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setWins(long wins) {
-        this.wins = wins;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     @Override
     public String toString() {
         return "Team{" +
                 "id=" + id +
-                ", loses=" + loses +
-                ", mascot='" + mascot + '\'' +
+                ", startDate=" + startDate +
+                ", progress='" + progress + '\'' +
                 ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
-                ", wins=" + wins +
+                ", createdBy=" + createdBy +
+                ", endDate=" + endDate +
                 '}';
     }
 
 
-    public Challenges(long id, long loses, String mascot, String name, String picture, long wins) {
+    public Challenges(long id, String startDate, String progress, String name, String picture, String createdBy, String endDate) {
         this.id = id;
-        this.loses = loses;
-        this.mascot = mascot;
+        this.startDate = startDate;
+        this.progress = progress;
         this.name = name;
         this.picture = picture;
-        this.wins = wins;
+        this.createdBy = createdBy;
+        this.endDate = endDate;
     }
 
-
+/* FOR REFERENCE:
+    private long id;
+    private String startDate;
+    private String progress;
+    private String name;
+    private String picture;
+    private String createdBy;
+    private String endDate;
+ */
 
 }

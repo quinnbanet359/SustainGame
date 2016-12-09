@@ -10,36 +10,42 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="522dp"
         android:layout_height="wrap_content"
         android:text="Sustain Game"
         android:textColor="#FFFFFF"
-        android:textSize="26pt"
-        android:fontFamily="sans-serif"
-        />
+        android:fontFamily="monospace"
+        android:textSize="24pt" />
 
     <ImageView
         android:id="@+id/light_bulb"
-        android:layout_width="241dp"
+        android:layout_width="293dp"
         android:layout_height="314dp"
         android:src="@drawable/lightbulb"
         android:layout_gravity="center_horizontal"
         android:layout_below="@id/title"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:layout_weight="0.16" />
 
-        <com.facebook.login.widget.LoginButton
+    <com.facebook.login.widget.LoginButton
+            android:layout_margin="15pt"
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_below="@id/light_bulb" />
+            android:layout_below="@id/light_bulb"
+        android:textSize="18sp"
+        android:layout_weight="0.34" />
 
     <Button
         android:text="skip login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:onClick="iwasclicked"/>
-
+        android:onClick="iwasclicked"
+        android:fontFamily="monospace"
+        android:layout_weight="0.20"
+        android:textStyle="normal|bold"
+        android:textSize="16sp" />
 
 </LinearLayout>

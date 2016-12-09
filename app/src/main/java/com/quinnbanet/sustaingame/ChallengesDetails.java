@@ -5,9 +5,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class ChallengesDetails extends AppCompatActivity {
+
+    public String idDetails;
+    public String startDateDetails;
+    public String progressDetails;
+    public String nameDetails;
+    public String pictureDetails;
+    public String createdByDetails;
+    public String endDateDetails;
+    CompletedChallenge completedChallenge = new CompletedChallenge();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +29,27 @@ public class ChallengesDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        TextView startDateField = (TextView) findViewById(R.id.sdContent);
+        TextView progressField = (TextView) findViewById(R.id.progressContent);
+        TextView nameField = (TextView) findViewById(R.id.nameContent);
+        TextView createdByField = (TextView) findViewById(R.id.createdByContent);
+        TextView endDateField = (TextView) findViewById(R.id.edContent);
+
+        idDetails = completedChallenge.getIdDetails();
+        startDateDetails = completedChallenge.getStartDateDetails();
+        progressDetails = completedChallenge.getProgressDetails();
+        nameDetails = completedChallenge.getNameDetails();
+        pictureDetails = completedChallenge.getPictureDetails();
+        createdByDetails = completedChallenge.getCreatedByDetails();
+        endDateDetails = completedChallenge.getEndDateDetails();
+
+        startDateField.setText(startDateDetails);
+        progressField.setText(progressDetails);
+        nameField.setText(nameDetails);
+        createdByField.setText(createdByDetails);
+        endDateField.setText(endDateDetails);
+        //Log.d("testListAdapterLog",endDateDetails);
     }
 
 }

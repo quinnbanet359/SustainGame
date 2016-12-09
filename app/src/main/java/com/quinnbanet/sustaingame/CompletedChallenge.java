@@ -33,13 +33,13 @@ public class CompletedChallenge extends Fragment {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
 
-    public String idDetails;
-    public String startDateDetails;
-    public String progressDetails;
-    public String nameDetails;
-    public String pictureDetails;
-    public String createdByDetails;
-    public String endDateDetails;
+    public static String idDetails;
+    public static String startDateDetails;
+    public static String progressDetails;
+    public static String nameDetails;
+    public static String pictureDetails;
+    public static String createdByDetails;
+    public static String endDateDetails;
 
     public CompletedChallenge() {
         //required empty constructor
@@ -72,7 +72,6 @@ public class CompletedChallenge extends Fragment {
                         String idBefore[] = currentPosition.split("id=");
                         String idAfter[] = idBefore[1].split(",");
                         idDetails = idAfter[0];
-                        Log.d("listAdapterLog",idAfter[0]);
                         //startDate
                         String sdBefore[] = currentPosition.split("startDate=");
                         String sdAfter[] = sdBefore[1].split(",");
@@ -98,19 +97,29 @@ public class CompletedChallenge extends Fragment {
                         String endDateAfter[] = endDateBefore[1].split(",");
                         endDateDetails = endDateAfter[0];
 
-                        Log.d("listAdapterLog","id: "+idDetails+
-                                                " startDate: "+ startDateDetails+
-                                                " progress: "+progressDetails+
-                                                " name: "+nameDetails+
-                                                " picture:"+pictureDetails+
-                                                " createdBy: "+createdByDetails+
-                                                " endDate: "+endDateDetails);
+                        Log.d("testListAdapterLog","id: "+idDetails);
+                        Log.d("testListAdapterLog","startDate: "+ startDateDetails);
+                        Log.d("testListAdapterLog","progress: "+progressDetails);
+                        Log.d("testListAdapterLog","name: "+nameDetails);
+                        Log.d("testListAdapterLog","picture:"+pictureDetails);
+                        Log.d("testListAdapterLog","createdBy: "+createdByDetails);
+                        Log.d("testListAdapterLog","endDate: "+endDateDetails);
+
+                        TextView startDateField = (TextView) view.findViewById(R.id.sdContent);
+                        TextView progressField = (TextView) view.findViewById(R.id.progressContent);
+                        TextView nameField = (TextView) view.findViewById(R.id.nameContent);
+                        TextView createdByField = (TextView) view.findViewById(R.id.createdByContent);
+                        TextView endDateField = (TextView) view.findViewById(R.id.edContent);
+
+//                        startDateField.setText(sdAfter[0]);
+//                        progressField.setText(progressAfter[0]);
+//                        nameField.setText(nameAfter[0]);
+//                        createdByField.setText(createdByDetails);
+//                        endDateField.setText(endDateDetails);
 
 
-
-
-                       // Intent intent = new Intent(CompletedChallenge.this.getActivity(), ChallengesDetails.class);
-                       // startActivity(intent);
+                        Intent intent = new Intent(CompletedChallenge.this.getActivity(), ChallengesDetails.class);
+                        startActivity(intent);
                     }
                 });
 
@@ -118,5 +127,61 @@ public class CompletedChallenge extends Fragment {
         };
         lv.setAdapter(la);
         return view;
+    }
+
+    public String getIdDetails() {
+        return idDetails;
+    }
+
+    public void setIdDetails(String idDetails) {
+        this.idDetails = idDetails;
+    }
+
+    public String getStartDateDetails() {
+        return startDateDetails;
+    }
+
+    public void setStartDateDetails(String startDateDetails) {
+        this.startDateDetails = startDateDetails;
+    }
+
+    public String getProgressDetails() {
+        return progressDetails;
+    }
+
+    public void setProgressDetails(String progressDetails) {
+        this.progressDetails = progressDetails;
+    }
+
+    public String getNameDetails() {
+        return nameDetails;
+    }
+
+    public void setNameDetails(String nameDetails) {
+        this.nameDetails = nameDetails;
+    }
+
+    public String getPictureDetails() {
+        return pictureDetails;
+    }
+
+    public void setPictureDetails(String pictureDetails) {
+        this.pictureDetails = pictureDetails;
+    }
+
+    public String getCreatedByDetails() {
+        return createdByDetails;
+    }
+
+    public void setCreatedByDetails(String createdByDetails) {
+        this.createdByDetails = createdByDetails;
+    }
+
+    public String getEndDateDetails() {
+        return endDateDetails;
+    }
+
+    public void setEndDateDetails(String endDateDetails) {
+        this.endDateDetails = endDateDetails;
     }
 }

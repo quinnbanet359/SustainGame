@@ -18,6 +18,7 @@ public class ChallengesDetails extends AppCompatActivity {
     public String pictureDetails;
     public String createdByDetails;
     public String endDateDetails;
+
     CompletedChallenge completedChallenge = new CompletedChallenge();
 
 
@@ -30,26 +31,32 @@ public class ChallengesDetails extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //initialize TextView objects
         TextView startDateField = (TextView) findViewById(R.id.sdContent);
         TextView progressField = (TextView) findViewById(R.id.progressContent);
         TextView nameField = (TextView) findViewById(R.id.nameContent);
         TextView createdByField = (TextView) findViewById(R.id.createdByContent);
         TextView endDateField = (TextView) findViewById(R.id.edContent);
+        if (1==1) { //TODO:change to if equals completed challenges else current challenges
+            //relate fields to other class
+            idDetails = completedChallenge.getIdDetails();
+            startDateDetails = completedChallenge.getStartDateDetails();
+            progressDetails = completedChallenge.getProgressDetails();
+            nameDetails = completedChallenge.getNameDetails();
+            pictureDetails = completedChallenge.getPictureDetails();
+            createdByDetails = completedChallenge.getCreatedByDetails();
+            endDateDetails = completedChallenge.getEndDateDetails();
 
-        idDetails = completedChallenge.getIdDetails();
-        startDateDetails = completedChallenge.getStartDateDetails();
-        progressDetails = completedChallenge.getProgressDetails();
-        nameDetails = completedChallenge.getNameDetails();
-        pictureDetails = completedChallenge.getPictureDetails();
-        createdByDetails = completedChallenge.getCreatedByDetails();
-        endDateDetails = completedChallenge.getEndDateDetails();
+            //set TextView Values
+            startDateField.setText(startDateDetails);
+            progressField.setText(progressDetails);
+            nameField.setText(nameDetails);
+            createdByField.setText(createdByDetails);
+            endDateField.setText(endDateDetails);
+        }
+        else {
 
-        startDateField.setText(startDateDetails);
-        progressField.setText(progressDetails);
-        nameField.setText(nameDetails);
-        createdByField.setText(createdByDetails);
-        endDateField.setText(endDateDetails);
-        //Log.d("testListAdapterLog",endDateDetails);
+        }
     }
 
 }

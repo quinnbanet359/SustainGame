@@ -1,12 +1,8 @@
 package com.quinnbanet.sustaingame;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 
 public class CompletedChallenge extends Fragment {
@@ -81,8 +69,8 @@ public class CompletedChallenge extends Fragment {
                         String progressAfter[] = progressBefore[1].split(",");
                         progressDetails = progressAfter[0];
                         //name
-                        String nameBefore[] = currentPosition.split("name=");
-                        String nameAfter[] = nameBefore[1].split(",");
+                        String nameBefore[] = currentPosition.split("name='");
+                        String nameAfter[] = nameBefore[1].split("',");
                         nameDetails = nameAfter[0];
                         //picture
                         String pictureBefore[] = currentPosition.split("picture=");
@@ -94,7 +82,7 @@ public class CompletedChallenge extends Fragment {
                         createdByDetails = createdByAfter[0];
                         //createdBy
                         String endDateBefore[] = currentPosition.split("endDate=");
-                        String endDateAfter[] = endDateBefore[1].split(",");
+                        String endDateAfter[] = endDateBefore[1].split("\\}"); // chars "\\" specify that i am looking for char "}"
                         endDateDetails = endDateAfter[0];
 
                         Log.d("testListAdapterLog","id: "+idDetails);
@@ -104,19 +92,6 @@ public class CompletedChallenge extends Fragment {
                         Log.d("testListAdapterLog","picture:"+pictureDetails);
                         Log.d("testListAdapterLog","createdBy: "+createdByDetails);
                         Log.d("testListAdapterLog","endDate: "+endDateDetails);
-
-                        TextView startDateField = (TextView) view.findViewById(R.id.sdContent);
-                        TextView progressField = (TextView) view.findViewById(R.id.progressContent);
-                        TextView nameField = (TextView) view.findViewById(R.id.nameContent);
-                        TextView createdByField = (TextView) view.findViewById(R.id.createdByContent);
-                        TextView endDateField = (TextView) view.findViewById(R.id.edContent);
-
-//                        startDateField.setText(sdAfter[0]);
-//                        progressField.setText(progressAfter[0]);
-//                        nameField.setText(nameAfter[0]);
-//                        createdByField.setText(createdByDetails);
-//                        endDateField.setText(endDateDetails);
-
 
                         Intent intent = new Intent(CompletedChallenge.this.getActivity(), ChallengesDetails.class);
                         startActivity(intent);

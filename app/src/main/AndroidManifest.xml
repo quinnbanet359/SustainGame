@@ -51,6 +51,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.quinnbanet.sustaingame.AuthDashboard" />
         </activity>
+        <activity
+            android:name=".CreateChallenge"
+            android:label="@string/title_activity_create_challenge"
+            android:parentActivityName=".AuthDashboard"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.quinnbanet.sustaingame.AuthDashboard" />
+        </activity>
     </application>
 
 </manifest>

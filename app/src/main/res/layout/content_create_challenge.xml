@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_create_challenge"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.quinnbanet.sustaingame.CreateChallenge"
+    tools:showIn="@layout/activity_create_challenge">
+
+    <TextView
+        android:text="Create a new challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createTitle"
+        android:fontFeatureSettings="ss"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Challenge:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createChallengeTitle"
+        android:layout_below="@+id/createTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="30dp"/>
+
+    <EditText
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createChallengeContent"
+        android:layout_below="@+id/createTitle"
+        android:layout_toEndOf="@+id/createChallengeTitle"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_above="@+id/createSDTitle" />
+
+    <EditText
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createSDContent"
+        android:layout_below="@+id/createChallengeTitle"
+        android:layout_toEndOf="@+id/createSDTitle"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:editable="false"
+        android:layout_above="@+id/createEDContent" />
+
+    <EditText
+        android:text=""
+        android:inputType="date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDContent"
+        android:layout_below="@+id/createSDTitle"
+        android:layout_toEndOf="@+id/createEDTitle"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_above="@+id/createCreatedByContent" />
+
+    <EditText
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createCreatedByContent"
+        android:layout_below="@+id/createEDTitle"
+        android:layout_toEndOf="@+id/createCreatedByTitle"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:editable="false"
+        android:layout_alignBottom="@+id/createCreatedByTitle" />
+
+    <TextView
+        android:text="End Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createSDTitle"
+        android:layout_alignStart="@+id/createChallengeTitle" />
+
+    <TextView
+        android:text="Start Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createSDTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createChallengeTitle"
+        android:layout_alignStart="@+id/createChallengeTitle" />
+
+    <TextView
+        android:text="Created By:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createCreatedByTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createEDTitle"
+        android:layout_alignStart="@+id/createEDTitle" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createBtn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:id="@+id/errorMessage"
+        android:layout_below="@+id/createBtn"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:srcCompat="@color/errorColor"
+        android:layout_alignTop="@+id/createChallengeTitle"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/nameError"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:srcCompat="@color/errorColor"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/endDateError"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/createEDContent"
+        android:layout_alignBottom="@+id/createEDTitle" />
+
+</RelativeLayout>

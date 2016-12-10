@@ -19,8 +19,8 @@ public class AuthDashboard extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: setup "Add new challenge feature"
-
+                Intent intent = new Intent(AuthDashboard.this, CreateChallenge.class);
+                startActivity(intent);
             }
         });
 

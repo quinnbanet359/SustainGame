@@ -14,12 +14,19 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.util.Date;
 
 
 public class CompletedChallenge extends Fragment {
     View view;
+    double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
+    Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+
+
 
     public static String idDetails;
     public static String startDateDetails;
@@ -37,9 +44,8 @@ public class CompletedChallenge extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
-
         final ListView lv = (ListView) view.findViewById(R.id.completedList);
-       final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, mRef) {
+       final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, completedChallQuery) {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
                 TextView tv = (TextView) v.findViewById(R.id.challengeName);

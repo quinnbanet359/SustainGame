@@ -12,6 +12,8 @@ public class Challenges {
     private String picture;
     private String createdBy;
     private String endDate;
+    private double utcStartDate;
+    private double utcEndDate;
 
     public Challenges(){}
 
@@ -71,6 +73,22 @@ public class Challenges {
         this.endDate = endDate;
     }
 
+    public double getUtcStartDate() {
+        return utcStartDate;
+    }
+
+    public void setUtcStartDate(double utcStartDate) {
+        this.utcStartDate = utcStartDate;
+    }
+
+    public double getUtcEndDate() {
+        return utcEndDate;
+    }
+
+    public void setUtcEndDate(double utcEndDate) {
+        this.utcEndDate = utcEndDate;
+    }
+
     @Override
     public String toString() {
         return "Team{" +
@@ -85,7 +103,7 @@ public class Challenges {
     }
 
 
-    public Challenges(long id, String startDate, String progress, String name, String picture, String createdBy, String endDate) {
+    public Challenges(long id, String startDate, String progress, String name, String picture, String createdBy, String endDate, double utcStartDate, double utcEndDate) {
         this.id = id;
         this.startDate = startDate;
         this.progress = progress;
@@ -93,6 +111,8 @@ public class Challenges {
         this.picture = picture;
         this.createdBy = createdBy;
         this.endDate = endDate;
+        this.utcStartDate = utcStartDate;
+        this.utcEndDate = utcEndDate;
     }
 
 /* FOR REFERENCE:
@@ -103,6 +123,8 @@ public class Challenges {
     private String picture;
     private String createdBy;
     private String endDate;
+    private double utcStartDate;
+    private double utcEndDate;
  */
 
 }

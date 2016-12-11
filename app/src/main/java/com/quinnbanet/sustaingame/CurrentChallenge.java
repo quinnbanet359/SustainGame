@@ -15,12 +15,15 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class CurrentChallenge extends Fragment {
     View view;
+    double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
+    Query currentChallQuery = mRef.orderByChild("utcEndDate").startAt(utc_timestamp);
 
     public static String idDetails;
     public static String startDateDetails;
@@ -39,7 +42,7 @@ public class CurrentChallenge extends Fragment {
         view = inflater.inflate(R.layout.fragment_current_challenge, container, false);
 
         final ListView lv = (ListView) view.findViewById(R.id.currentList);
-        final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, mRef) {
+        final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, currentChallQuery) {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
                 TextView tv = (TextView) v.findViewById(R.id.challengeName);

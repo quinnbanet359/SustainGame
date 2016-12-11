@@ -1,9 +1,6 @@
 package com.quinnbanet.sustaingame;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,16 +9,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.facebook.Profile;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateChallenge extends AppCompatActivity {
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference("Challenges");
+    DatabaseReference usersRef = ref.child("users");
+    Map<String, Challenges> createChallenge = new HashMap<String, Challenges>();
+    final long idTracker = 129; //129 is current id number, we will increase each new creation
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +36,12 @@ public class CreateChallenge extends AppCompatActivity {
         //set "start date" and "created by" for current user
         TextView startDate = (TextView) findViewById(R.id.createSDContent);
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
-        String currentDate= sdf.format(new Date());
+        final String currentDate= sdf.format(new Date());
         startDate.setText(currentDate);
         Log.d("setLogs",currentDate);
 
         TextView userName = (TextView) findViewById(R.id.createCreatedByContent);
-        Profile profile = Profile.getCurrentProfile();
+        final Profile profile = Profile.getCurrentProfile();
         userName.setText(profile.getName());
         Log.d("setLogs",profile.getName());
 
@@ -58,7 +59,7 @@ public class CreateChallenge extends AppCompatActivity {
                 //reset errors
                 challengeErrorCover.setVisibility(View.VISIBLE);
                 endDateErrorCover.setVisibility(View.VISIBLE);
-                
+
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
                 EditText endDate = (EditText) findViewById(R.id.createEDContent);
@@ -82,9 +83,10 @@ public class CreateChallenge extends AppCompatActivity {
                     errorMessage.setText("Enter Date as 12/10/16 \n Error with End Date Field \n Be sure to enter text and ensure there are no special characters");
                 }
                 else {
-
-
                     //TODO: Send info to firebase
+                    createChallenge.put("",new Challenges(idTracker+1,currentDate,"",enteredChallenge,"",profile.getName(), enteredEndDate));
+                    usersRef.setValue(createChallenge);
+                    //idTracker++;          increment idTracker upn each creation
                 }
             }
         });

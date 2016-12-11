@@ -55,6 +55,7 @@ public class ChallengesDetails extends AppCompatActivity {
             createdByField.setText(createdByDetails);
             endDateField.setText(endDateDetails);
 
+            completedChallenge.setCompletedClick("");
         }
         else {
             //relate fields to other class
@@ -72,6 +73,8 @@ public class ChallengesDetails extends AppCompatActivity {
             nameField.setText(nameDetails);
             createdByField.setText(createdByDetails);
             endDateField.setText(endDateDetails);
+            
+            currentChallenge.setCurrentClick("");
         }
     }
 

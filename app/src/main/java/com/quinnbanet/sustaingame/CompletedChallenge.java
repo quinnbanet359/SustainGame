@@ -36,6 +36,8 @@ public class CompletedChallenge extends Fragment {
     public static String createdByDetails;
     public static String endDateDetails;
 
+    public static String completedClick = "";
+
     public CompletedChallenge() {
         //required empty constructor
     }
@@ -54,10 +56,10 @@ public class CompletedChallenge extends Fragment {
 
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                        //send user to new activity upon challenge click
+                        //set completed as being clicked
+                        completedClick = "yes";
 
-                        //Log.d("listAdapterLog","position: "+ position);
-
+                        //get current data field
                         String currentPosition;
                         Object lvRawData = lv.getItemAtPosition(position);
                         currentPosition = lvRawData.toString();
@@ -110,59 +112,67 @@ public class CompletedChallenge extends Fragment {
         return view;
     }
 
-    public String getIdDetails() {
+    public static String getIdDetails() {
         return idDetails;
     }
 
-    public void setIdDetails(String idDetails) {
-        this.idDetails = idDetails;
+    public static void setIdDetails(String idDetails) {
+        CompletedChallenge.idDetails = idDetails;
     }
 
-    public String getStartDateDetails() {
+    public static String getStartDateDetails() {
         return startDateDetails;
     }
 
-    public void setStartDateDetails(String startDateDetails) {
-        this.startDateDetails = startDateDetails;
+    public static void setStartDateDetails(String startDateDetails) {
+        CompletedChallenge.startDateDetails = startDateDetails;
     }
 
-    public String getProgressDetails() {
+    public static String getProgressDetails() {
         return progressDetails;
     }
 
-    public void setProgressDetails(String progressDetails) {
-        this.progressDetails = progressDetails;
+    public static void setProgressDetails(String progressDetails) {
+        CompletedChallenge.progressDetails = progressDetails;
     }
 
-    public String getNameDetails() {
+    public static String getNameDetails() {
         return nameDetails;
     }
 
-    public void setNameDetails(String nameDetails) {
-        this.nameDetails = nameDetails;
+    public static void setNameDetails(String nameDetails) {
+        CompletedChallenge.nameDetails = nameDetails;
     }
 
-    public String getPictureDetails() {
+    public static String getPictureDetails() {
         return pictureDetails;
     }
 
-    public void setPictureDetails(String pictureDetails) {
-        this.pictureDetails = pictureDetails;
+    public static void setPictureDetails(String pictureDetails) {
+        CompletedChallenge.pictureDetails = pictureDetails;
     }
 
-    public String getCreatedByDetails() {
+    public static String getCreatedByDetails() {
         return createdByDetails;
     }
 
-    public void setCreatedByDetails(String createdByDetails) {
-        this.createdByDetails = createdByDetails;
+    public static void setCreatedByDetails(String createdByDetails) {
+        CompletedChallenge.createdByDetails = createdByDetails;
     }
 
-    public String getEndDateDetails() {
+    public static String getEndDateDetails() {
         return endDateDetails;
     }
 
-    public void setEndDateDetails(String endDateDetails) {
-        this.endDateDetails = endDateDetails;
+    public static void setEndDateDetails(String endDateDetails) {
+        CompletedChallenge.endDateDetails = endDateDetails;
+    }
+
+    public String getCompletedClick() {
+        return completedClick;
+    }
+
+    public void setCompletedClick(String completedClick) {
+        this.completedClick = completedClick;
     }
 }

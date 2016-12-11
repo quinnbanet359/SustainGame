@@ -89,7 +89,7 @@ public class Challenges {
         this.utcEndDate = utcEndDate;
     }
 
-/*    @Override
+   @Override
     public String toString() {
         return "Team{" +
                 "id=" + id +
@@ -100,7 +100,7 @@ public class Challenges {
                 ", createdBy=" + createdBy +
                 ", endDate=" + endDate +
                 '}';
-    }*/
+    }
 
 
     public Challenges(long id, String startDate, String progress, String name, String picture, String createdBy, String endDate, double utcStartDate, double utcEndDate) {

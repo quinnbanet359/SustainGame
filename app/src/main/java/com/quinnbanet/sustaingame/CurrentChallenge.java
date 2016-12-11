@@ -33,6 +33,8 @@ public class CurrentChallenge extends Fragment {
     public static String createdByDetails;
     public static String endDateDetails;
 
+    public static String currentClick = "";
+
     public CurrentChallenge() {
         //required empty constructor
     }
@@ -51,10 +53,10 @@ public class CurrentChallenge extends Fragment {
 
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                        //send user to new activity upon challenge click
+                        //set completed as being clicked
+                        currentClick = "yes";
 
-                        //Log.d("listAdapterLog","position: "+ position);
-
+                        //get current data field
                         String currentPosition;
                         Object lvRawData = (Object) lv.getItemAtPosition(position);
                         currentPosition = lvRawData.toString();
@@ -105,5 +107,69 @@ public class CurrentChallenge extends Fragment {
         };
         lv.setAdapter(la);
         return view;
+    }
+
+    public static String getIdDetails() {
+        return idDetails;
+    }
+
+    public static void setIdDetails(String idDetails) {
+        CurrentChallenge.idDetails = idDetails;
+    }
+
+    public static String getStartDateDetails() {
+        return startDateDetails;
+    }
+
+    public static void setStartDateDetails(String startDateDetails) {
+        CurrentChallenge.startDateDetails = startDateDetails;
+    }
+
+    public static String getProgressDetails() {
+        return progressDetails;
+    }
+
+    public static void setProgressDetails(String progressDetails) {
+        CurrentChallenge.progressDetails = progressDetails;
+    }
+
+    public static String getNameDetails() {
+        return nameDetails;
+    }
+
+    public static void setNameDetails(String nameDetails) {
+        CurrentChallenge.nameDetails = nameDetails;
+    }
+
+    public static String getPictureDetails() {
+        return pictureDetails;
+    }
+
+    public static void setPictureDetails(String pictureDetails) {
+        CurrentChallenge.pictureDetails = pictureDetails;
+    }
+
+    public static String getCreatedByDetails() {
+        return createdByDetails;
+    }
+
+    public static void setCreatedByDetails(String createdByDetails) {
+        CurrentChallenge.createdByDetails = createdByDetails;
+    }
+
+    public static String getEndDateDetails() {
+        return endDateDetails;
+    }
+
+    public static void setEndDateDetails(String endDateDetails) {
+        CurrentChallenge.endDateDetails = endDateDetails;
+    }
+
+    public String getCurrentClick() {
+        return currentClick;
+    }
+
+    public void setCurrentClick(String currentClick) {
+        this.currentClick = currentClick;
     }
 }

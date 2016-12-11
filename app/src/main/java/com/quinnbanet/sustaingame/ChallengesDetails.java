@@ -20,6 +20,7 @@ public class ChallengesDetails extends AppCompatActivity {
     public String endDateDetails;
 
     CompletedChallenge completedChallenge = new CompletedChallenge();
+    CurrentChallenge currentChallenge = new CurrentChallenge();
 
 
     @Override
@@ -37,7 +38,7 @@ public class ChallengesDetails extends AppCompatActivity {
         TextView nameField = (TextView) findViewById(R.id.nameContent);
         TextView createdByField = (TextView) findViewById(R.id.createdByContent);
         TextView endDateField = (TextView) findViewById(R.id.edContent);
-        if (1==1) { //TODO:change to if equals completed challenges else current challenges
+        if (completedChallenge.getCompletedClick().equals( "yes")) {
             //relate fields to other class
             idDetails = completedChallenge.getIdDetails();
             startDateDetails = completedChallenge.getStartDateDetails();
@@ -53,9 +54,24 @@ public class ChallengesDetails extends AppCompatActivity {
             nameField.setText(nameDetails);
             createdByField.setText(createdByDetails);
             endDateField.setText(endDateDetails);
+
         }
         else {
+            //relate fields to other class
+            idDetails = currentChallenge.getIdDetails();
+            startDateDetails = currentChallenge.getStartDateDetails();
+            progressDetails = currentChallenge.getProgressDetails();
+            nameDetails = currentChallenge.getNameDetails();
+            pictureDetails = currentChallenge.getPictureDetails();
+            createdByDetails = currentChallenge.getCreatedByDetails();
+            endDateDetails = currentChallenge.getEndDateDetails();
 
+            //set TextView Values
+            startDateField.setText(startDateDetails);
+            progressField.setText(progressDetails);
+            nameField.setText(nameDetails);
+            createdByField.setText(createdByDetails);
+            endDateField.setText(endDateDetails);
         }
     }
 

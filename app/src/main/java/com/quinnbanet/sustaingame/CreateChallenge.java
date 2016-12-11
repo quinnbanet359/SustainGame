@@ -1,5 +1,6 @@
 package com.quinnbanet.sustaingame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,13 +14,10 @@ import com.facebook.Profile;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
@@ -29,7 +27,8 @@ public class CreateChallenge extends AppCompatActivity {
     DatabaseReference ref = database.getReference("Challenges");
     DatabaseReference usersRef = ref.child("users");
     Map<String, Challenges> createChallenge = new HashMap<String, Challenges>();
-    final long idTracker = 129; //129 is current id number, we will increase each new creation
+    static long idSubTracker = 129; //129 is current id number, we will increase each new creation
+    static long idTracker = 903;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +68,7 @@ public class CreateChallenge extends AppCompatActivity {
 
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
-                EditText endDate = (EditText) findViewById(R.id.createEDContent);
+                EditText endDate = (EditText) findViewById(R.id.createEDContent1);
                 String enteredChallenge = challenge.getText().toString();
                 String enteredEndDate = endDate.getText().toString();
                 Log.d("getLogs",enteredChallenge);
@@ -119,15 +118,19 @@ public class CreateChallenge extends AppCompatActivity {
                     long fake2= 0;
 
                     Log.d("firebaseTestLog","utc start: "+ fake1 + " utcEnd: "+ fake2);
-                    Log.d("firebaseTestLog",idTracker+1+""+""+enteredChallenge+"121016"+ profile.getName()+ enteredEndDate+ fake1+ fake2);
+                    Log.d("firebaseTestLog", idSubTracker +1+""+""+enteredChallenge+"121016"+ profile.getName()+ enteredEndDate+ fake1+ fake2);
 
 
-                    Challenges challenges = new Challenges(idTracker+1,"121116","progress",enteredChallenge,"picture", profile.getName(), enteredEndDate, fake1, fake2);
-                    ref.child("Challenges").setValue(challenges);
+                    Challenges challenges = new Challenges(idSubTracker +1,"121116","progress",enteredChallenge,"picture", profile.getName(), enteredEndDate, fake1, fake2);
+                    ref.child(""+idTracker).setValue(challenges);
+                    idTracker++;
+                    idSubTracker++;
 
                     //TODO: it puts data in the db as challanges vs as an id, we need to assign it in the db as an id
 
-                    //TODO: after add need to send user back to auth dashboard
+                    //after entry, send user back to AuthDashboard
+                    Intent intent = new Intent(CreateChallenge.this, AuthDashboard.class);
+                    startActivity(intent);
 
 
                     /* FOR REFERENCE:

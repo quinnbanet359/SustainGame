@@ -47,7 +47,7 @@
         android:layout_toEndOf="@+id/createSDTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="25dp"
-        android:layout_above="@+id/createEDContent"
+        android:layout_above="@+id/createEDContent1"
         android:editable="false"/>
 
     <TextView
@@ -132,17 +132,6 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/createSDTitle" />
 
-    <EditText
-        android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEDContent"
-        android:layout_marginLeft="15dp"
-        android:layout_alignBaseline="@+id/createEDTitle"
-        android:layout_alignBottom="@+id/createEDTitle"
-        android:layout_alignEnd="@+id/createChallengeContent"
-        android:layout_toEndOf="@+id/createCreatedByTitle" />
-
     <Button
         android:text="Submit"
         android:layout_width="wrap_content"
@@ -151,5 +140,54 @@
         android:layout_below="@+id/createCreatedByContent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp" />
+
+
+    <EditText
+        android:inputType="date"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDContent2"
+        android:layout_alignBottom="@+id/firstSlash"
+        android:layout_toEndOf="@+id/firstSlash" />
+
+    <TextView
+        android:text=" / "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstSlash"
+        android:textAlignment="center"
+        tools:textAlignment="inherit"
+        tools:textSize="35dp"
+        android:layout_alignBottom="@+id/createEDContent1"
+        android:layout_toEndOf="@+id/createEDContent1"
+        android:layout_alignTop="@+id/createEDTitle" />
+    <TextView
+        android:text=" / "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondSlash"
+        android:textAlignment="center"
+        tools:textAlignment="inherit"
+        tools:textSize="35dp"
+        android:layout_alignBottom="@+id/createEDContent1"
+        android:layout_toEndOf="@+id/createEDContent2"
+        android:layout_alignTop="@+id/firstSlash" />
+
+    <EditText
+        android:inputType="date"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDContent3"
+        android:layout_alignBottom="@+id/secondSlash"
+        android:layout_toEndOf="@+id/secondSlash" />
+
+    <EditText
+        android:inputType="date"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDContent1"
+        android:layout_marginLeft="15dp"
+        android:layout_above="@+id/createCreatedByContent"
+        android:layout_alignStart="@+id/createBtn" />
 
 </RelativeLayout>

@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:text="Your Completed Challanges"
+        android:text="Your Completed Challenges"
         android:layout_width="433dp"
         android:layout_height="wrap_content"
         android:id="@+id/completedListTitle"

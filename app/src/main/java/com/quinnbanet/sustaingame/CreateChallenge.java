@@ -13,10 +13,13 @@ import com.facebook.Profile;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
@@ -108,10 +111,17 @@ public class CreateChallenge extends AppCompatActivity {
                     }
 
 
+                    //utc start and end throwing error bc of decimal . in the double
+                    // round to nearest whole number
+                    double roundedUTCStart = (double) Math.round(utcStart);
+                    double roundedUTCEnd = (double) Math.round(utcEnd); //round does not remove .0 from double
 
-
-
-                    createChallenge.put("",new Challenges(idTracker+1,currentDate,"",enteredChallenge,"", profile.getName(), enteredEndDate, utcStart, utcEnd));
+                    Log.d("firebaseTestLog","utc start: "+ roundedUTCStart + "utcEnd: "+ roundedUTCEnd);
+                    Log.d("firebaseTestLog",idTracker+1+""+""+enteredChallenge+""+ profile.getName()+ enteredEndDate+ roundedUTCStart+ roundedUTCEnd);
+                                                            //long id, string startDate,, string progress, string name, string picture, string createdby,
+                                                            //string end date, string utcstart, string utc end
+                    createChallenge.put("",new Challenges(idTracker+1,"","",enteredChallenge,"", profile.getName(), enteredEndDate, roundedUTCStart, roundedUTCEnd));
+                    Log.d("firebaseTestLog",createChallenge.toString());
                     usersRef.setValue(createChallenge);
                     //idTracker++;          increment idTracker upn each creation
 

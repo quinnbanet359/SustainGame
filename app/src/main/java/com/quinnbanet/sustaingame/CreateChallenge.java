@@ -12,10 +12,14 @@ import android.widget.TextView;
 import com.facebook.Profile;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class CreateChallenge extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -84,9 +88,46 @@ public class CreateChallenge extends AppCompatActivity {
                 }
                 else {
                     //TODO: Send info to firebase
-                    createChallenge.put("",new Challenges(idTracker+1,currentDate,"",enteredChallenge,"",profile.getName(), enteredEndDate));
+                    double utcStart = System.currentTimeMillis();
+                    String utcEndString;
+                    double utcEnd = 0;
+
+                    //convert string to Date
+                    DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                    Date endingDate;
+                    try {
+                        endingDate = df.parse(enteredEndDate);
+                        //convert date to string utc
+                        SimpleDateFormat formatter = new SimpleDateFormat();
+                        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        utcEndString = formatter.format(endingDate);
+                        //convert string utc to double
+                        utcEnd = Double.parseDouble(utcEndString);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
+                    createChallenge.put("",new Challenges(idTracker+1,currentDate,"",enteredChallenge,"", profile.getName(), enteredEndDate, utcStart, utcEnd));
                     usersRef.setValue(createChallenge);
                     //idTracker++;          increment idTracker upn each creation
+
+
+                    /* FOR REFERENCE:
+                    private long id;
+                    private String startDate;
+                    private String progress;
+                    private String name;
+                    private String picture;
+                    private String createdBy;
+                    private String endDate;
+                    private double utcStartDate;
+                    private double utcEndDate;
+                 */
+
                 }
             }
         });

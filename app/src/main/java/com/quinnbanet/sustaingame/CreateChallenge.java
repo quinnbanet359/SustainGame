@@ -115,15 +115,19 @@ public class CreateChallenge extends AppCompatActivity {
                     // round to nearest whole number
                     double roundedUTCStart = (double) Math.round(utcStart);
                     double roundedUTCEnd = (double) Math.round(utcEnd); //round does not remove .0 from double
+                    long fake1 = 0;
+                    long fake2= 0;
 
-                    Log.d("firebaseTestLog","utc start: "+ roundedUTCStart + "utcEnd: "+ roundedUTCEnd);
-                    Log.d("firebaseTestLog",idTracker+1+""+""+enteredChallenge+""+ profile.getName()+ enteredEndDate+ roundedUTCStart+ roundedUTCEnd);
-                                                            //long id, string startDate,, string progress, string name, string picture, string createdby,
-                                                            //string end date, string utcstart, string utc end
-                    createChallenge.put("",new Challenges(idTracker+1,"","",enteredChallenge,"", profile.getName(), enteredEndDate, roundedUTCStart, roundedUTCEnd));
-                    Log.d("firebaseTestLog",createChallenge.toString());
-                    usersRef.setValue(createChallenge);
-                    //idTracker++;          increment idTracker upn each creation
+                    Log.d("firebaseTestLog","utc start: "+ fake1 + " utcEnd: "+ fake2);
+                    Log.d("firebaseTestLog",idTracker+1+""+""+enteredChallenge+"121016"+ profile.getName()+ enteredEndDate+ fake1+ fake2);
+
+
+                    Challenges challenges = new Challenges(idTracker+1,"121116","progress",enteredChallenge,"picture", profile.getName(), enteredEndDate, fake1, fake2);
+                    ref.child("Challenges").setValue(challenges);
+
+                    //TODO: it puts data in the db as challanges vs as an id, we need to assign it in the db as an id
+
+                    //TODO: after add need to send user back to auth dashboard
 
 
                     /* FOR REFERENCE:
@@ -142,5 +146,4 @@ public class CreateChallenge extends AppCompatActivity {
             }
         });
     }
-
 }

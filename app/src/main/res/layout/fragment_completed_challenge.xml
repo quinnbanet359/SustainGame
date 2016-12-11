@@ -7,21 +7,25 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="255dp"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:id="@+id/completedList"
-        android:layout_below="@+id/completedListTitle" />
+        android:layout_below="@+id/completedListTitle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="Your Completed Challanges"
-        android:layout_width="433dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/completedListTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_gravity="center_vertical"
         android:background="@color/Teal"
         android:gravity="center_vertical"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

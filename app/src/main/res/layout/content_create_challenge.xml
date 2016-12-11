@@ -18,7 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/createTitle"
-        android:fontFeatureSettings="ss"
         android:textSize="24sp" />
 
     <TextView
@@ -31,17 +30,6 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="30dp"/>
 
-    <EditText
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createChallengeContent"
-        android:layout_below="@+id/createTitle"
-        android:layout_toEndOf="@+id/createChallengeTitle"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_above="@+id/createSDTitle" />
-
     <TextView
         android:text="Start Date:"
         android:layout_width="wrap_content"
@@ -51,8 +39,7 @@
         android:layout_below="@+id/createChallengeTitle"
         android:layout_alignStart="@+id/createChallengeTitle" />
 
-    <EditText
-        android:text=""
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/createSDContent"
@@ -60,28 +47,17 @@
         android:layout_toEndOf="@+id/createSDTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="25dp"
-        android:layout_above="@+id/createEDContent" />
+        android:layout_above="@+id/createEDContent"
+        android:editable="false"/>
 
     <TextView
-        android:text="End Date:"
+        android:text="End Date: \n (MM/DD/YY)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/createEDTitle"
         android:layout_marginTop="24dp"
         android:layout_below="@+id/createSDTitle"
         android:layout_alignStart="@+id/createChallengeTitle" />
-
-    <EditText
-        android:text=""
-        android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEDContent"
-        android:layout_below="@+id/createSDTitle"
-        android:layout_toEndOf="@+id/createEDTitle"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_above="@+id/createCreatedByContent" />
 
     <TextView
         android:text="Created By:"
@@ -92,8 +68,7 @@
         android:layout_below="@+id/createEDTitle"
         android:layout_alignStart="@+id/createEDTitle" />
 
-    <EditText
-        android:text=""
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/createCreatedByContent"
@@ -101,23 +76,16 @@
         android:layout_toEndOf="@+id/createCreatedByTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="25dp"
-        android:layout_alignBottom="@+id/createCreatedByTitle"/>
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createBtn"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBottom="@+id/createCreatedByTitle"
+        android:editable="false"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:id="@+id/errorMessage"
         android:layout_below="@+id/createBtn"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="15dp"
@@ -131,11 +99,57 @@
     <ImageView
         android:layout_width="15dp"
         android:layout_height="15dp"
+        app:srcCompat="@android:color/white"
+        android:id="@+id/nameErrorCover"
+        android:layout_alignTop="@+id/nameError"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         app:srcCompat="@color/errorColor"
         android:layout_marginEnd="11dp"
         android:id="@+id/endDateError"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/createEDContent"
-        android:layout_alignBottom="@+id/createEDTitle" />
+        android:layout_alignTop="@+id/createEDTitle" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:srcCompat="@android:color/white"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/endDateErrorCover"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/createEDTitle" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createChallengeContent"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBaseline="@+id/createChallengeTitle"
+        android:layout_alignBottom="@+id/createChallengeTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/createSDTitle" />
+
+    <EditText
+        android:inputType="date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDContent"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBaseline="@+id/createEDTitle"
+        android:layout_alignBottom="@+id/createEDTitle"
+        android:layout_alignEnd="@+id/createChallengeContent"
+        android:layout_toEndOf="@+id/createCreatedByTitle" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createBtn"
+        android:layout_below="@+id/createCreatedByContent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
 
 </RelativeLayout>

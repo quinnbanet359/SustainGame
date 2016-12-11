@@ -32,23 +32,14 @@ public class CreateChallenge extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //hide error fields
-        final ImageView challengeError = (ImageView) findViewById(R.id.nameError);
-        final ImageView endDateError = (ImageView) findViewById(R.id.endDateError);
-        final TextView errorMessage = (TextView) findViewById(R.id.errorMessage);
-        challengeError.setVisibility(View.INVISIBLE);
-        endDateError.setVisibility(View.INVISIBLE);
-        errorMessage.setVisibility(View.INVISIBLE);
-
-
         //set "start date" and "created by" for current user
-        EditText startDate = (EditText) findViewById(R.id.createSDContent);
+        TextView startDate = (TextView) findViewById(R.id.createSDContent);
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
         String currentDate= sdf.format(new Date());
         startDate.setText(currentDate);
         Log.d("setLogs",currentDate);
 
-        EditText userName = (EditText) findViewById(R.id.createCreatedByContent);
+        TextView userName = (TextView) findViewById(R.id.createCreatedByContent);
         Profile profile = Profile.getCurrentProfile();
         userName.setText(profile.getName());
         Log.d("setLogs",profile.getName());
@@ -57,6 +48,17 @@ public class CreateChallenge extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // declare error fields
+                ImageView challengeError = (ImageView) findViewById(R.id.nameError);
+                ImageView endDateError = (ImageView) findViewById(R.id.endDateError);
+                ImageView challengeErrorCover = (ImageView) findViewById(R.id.nameErrorCover);
+                ImageView endDateErrorCover = (ImageView) findViewById(R.id.endDateErrorCover);
+                TextView errorMessage = (TextView) findViewById(R.id.errorMessage);
+
+                //reset errors
+                challengeErrorCover.setVisibility(View.VISIBLE);
+                endDateErrorCover.setVisibility(View.VISIBLE);
+                
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
                 EditText endDate = (EditText) findViewById(R.id.createEDContent);
@@ -65,23 +67,22 @@ public class CreateChallenge extends AppCompatActivity {
                 Log.d("getLogs",enteredChallenge);
                 Log.d("getLogs",enteredEndDate);
 
+
                 String specialChars = ""; //TODO: look up and fill with java special chars in string
                 String specialReturns = ""; //TODO: look up and fill with java special return chars in string
 
-                if (enteredChallenge == " " || enteredChallenge == null || enteredChallenge == "") { //TODO: if or.contains special chars
-                    challengeError.setVisibility(View.VISIBLE);
+                if (enteredChallenge.isEmpty()) { //TODO: if or.contains special chars
+                    Log.d("ifLog","got to if");
+                    challengeErrorCover.setVisibility(View.INVISIBLE);
                     errorMessage.setText("Error with Challenge Name Field \n Be sure to enter text and ensure there are no special characters");
                 }
-                else if (enteredEndDate == " " || enteredEndDate == null || enteredEndDate == "") { //TODO: if or.contains special chars
-                    endDateError.setVisibility(View.VISIBLE);
+                else if (enteredEndDate.isEmpty()) { //TODO: if or.contains special chars
+                    Log.d("ifLog","got to else if");
+                    endDateErrorCover.setVisibility(View.INVISIBLE);
                     errorMessage.setText("Enter Date as 12/10/16 \n Error with End Date Field \n Be sure to enter text and ensure there are no special characters");
                 }
                 else {
-                    // remove any previously activated fields
-                    challengeError.setVisibility(View.INVISIBLE);
-                    endDateError.setVisibility(View.INVISIBLE);
-                    errorMessage.setText("");
-                    errorMessage.setVisibility(View.INVISIBLE);
+
 
                     //TODO: Send info to firebase
                 }

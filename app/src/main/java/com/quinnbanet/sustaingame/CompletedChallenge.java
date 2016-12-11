@@ -53,7 +53,7 @@ public class CompletedChallenge extends Fragment {
                         //Log.d("listAdapterLog","position: "+ position);
 
                         String currentPosition;
-                        Object lvRawData = (Object) lv.getItemAtPosition(position);
+                        Object lvRawData = lv.getItemAtPosition(position);
                         currentPosition = lvRawData.toString();
 
                         //ID

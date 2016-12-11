@@ -42,6 +42,15 @@
         android:layout_marginTop="25dp"
         android:layout_above="@+id/createSDTitle" />
 
+    <TextView
+        android:text="Start Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createSDTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createChallengeTitle"
+        android:layout_alignStart="@+id/createChallengeTitle" />
+
     <EditText
         android:text=""
         android:layout_width="wrap_content"
@@ -51,8 +60,16 @@
         android:layout_toEndOf="@+id/createSDTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="25dp"
-        android:editable="false"
         android:layout_above="@+id/createEDContent" />
+
+    <TextView
+        android:text="End Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createSDTitle"
+        android:layout_alignStart="@+id/createChallengeTitle" />
 
     <EditText
         android:text=""
@@ -66,6 +83,15 @@
         android:layout_marginTop="25dp"
         android:layout_above="@+id/createCreatedByContent" />
 
+    <TextView
+        android:text="Created By:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createCreatedByTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createEDTitle"
+        android:layout_alignStart="@+id/createEDTitle" />
+
     <EditText
         android:text=""
         android:layout_width="wrap_content"
@@ -75,35 +101,7 @@
         android:layout_toEndOf="@+id/createCreatedByTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="25dp"
-        android:editable="false"
-        android:layout_alignBottom="@+id/createCreatedByTitle" />
-
-    <TextView
-        android:text="End Date:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEDTitle"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/createSDTitle"
-        android:layout_alignStart="@+id/createChallengeTitle" />
-
-    <TextView
-        android:text="Start Date:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createSDTitle"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/createChallengeTitle"
-        android:layout_alignStart="@+id/createChallengeTitle" />
-
-    <TextView
-        android:text="Created By:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createCreatedByTitle"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/createEDTitle"
-        android:layout_alignStart="@+id/createEDTitle" />
+        android:layout_alignBottom="@+id/createCreatedByTitle"/>
 
     <Button
         android:text="Submit"

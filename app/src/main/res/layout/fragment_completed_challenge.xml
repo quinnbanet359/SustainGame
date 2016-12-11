@@ -1,9 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CompletedChallenge">
 
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/completedList"
+        android:layout_below="@+id/completedListTitle" />
 
     <TextView
         android:text="Your Completed Challanges"
@@ -12,12 +19,9 @@
         android:id="@+id/completedListTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_gravity="center_vertical"
-        android:background="@color/Teal" />
+        android:background="@color/Teal"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="255dp"
-        android:layout_gravity="bottom"
-        android:id="@+id/completedList"/>
-
-</FrameLayout>
+</RelativeLayout>

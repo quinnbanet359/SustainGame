@@ -13,16 +13,8 @@
     tools:context="com.quinnbanet.sustaingame.ChallengesDetails"
     tools:showIn="@layout/activity_challenges_details">
 
-    <ImageView
-        android:layout_width="152dp"
-        android:layout_height="154dp"
-        app:srcCompat="@color/bodyTextColor"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
-        android:text="Name:"
+        android:text="Challenge:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/nameTitle"
@@ -111,5 +103,13 @@
         android:layout_toEndOf="@+id/createdByTitle"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"/>
+
+    <ImageView
+        android:layout_width="152dp"
+        android:layout_height="154dp"
+        app:srcCompat="@drawable/lightbulb"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

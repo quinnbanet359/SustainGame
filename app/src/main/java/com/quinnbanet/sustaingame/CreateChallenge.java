@@ -30,8 +30,6 @@ public class CreateChallenge extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setVisibility(View.INVISIBLE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //hide error fields
@@ -48,10 +46,12 @@ public class CreateChallenge extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
         String currentDate= sdf.format(new Date());
         startDate.setText(currentDate);
+        Log.d("setLogs",currentDate);
 
         EditText userName = (EditText) findViewById(R.id.createCreatedByContent);
         Profile profile = Profile.getCurrentProfile();
         userName.setText(profile.getName());
+        Log.d("setLogs",profile.getName());
 
         Button button = (Button) findViewById(R.id.createBtn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -60,15 +60,19 @@ public class CreateChallenge extends AppCompatActivity {
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
                 EditText endDate = (EditText) findViewById(R.id.createEDContent);
+                String enteredChallenge = challenge.getText().toString();
+                String enteredEndDate = endDate.getText().toString();
+                Log.d("getLogs",enteredChallenge);
+                Log.d("getLogs",enteredEndDate);
 
                 String specialChars = ""; //TODO: look up and fill with java special chars in string
                 String specialReturns = ""; //TODO: look up and fill with java special return chars in string
 
-                if (challenge.getText().toString() == " " || challenge.getText().toString() == null) { //TODO: if or.contains special chars
+                if (enteredChallenge == " " || enteredChallenge == null || enteredChallenge == "") { //TODO: if or.contains special chars
                     challengeError.setVisibility(View.VISIBLE);
                     errorMessage.setText("Error with Challenge Name Field \n Be sure to enter text and ensure there are no special characters");
                 }
-                else if (endDate.getText().toString() == " " || endDate.getText().toString() == null) { //TODO: if or.contains special chars
+                else if (enteredEndDate == " " || enteredEndDate == null || enteredEndDate == "") { //TODO: if or.contains special chars
                     endDateError.setVisibility(View.VISIBLE);
                     errorMessage.setText("Enter Date as 12/10/16 \n Error with End Date Field \n Be sure to enter text and ensure there are no special characters");
                 }
@@ -80,7 +84,6 @@ public class CreateChallenge extends AppCompatActivity {
                     errorMessage.setVisibility(View.INVISIBLE);
 
                     //TODO: Send info to firebase
-
                 }
             }
         });

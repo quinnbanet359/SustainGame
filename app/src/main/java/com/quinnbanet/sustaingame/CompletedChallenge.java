@@ -60,17 +60,17 @@ public class CompletedChallenge extends Fragment {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
                 String whichButton = getActivity().getIntent().getExtras().getString("WHICH_BUTTON");
+                final Profile profile = Profile.getCurrentProfile();
+                String userName = profile.getName();
                 if(whichButton.equals("my_challenges")){
-                    final Profile profile = Profile.getCurrentProfile();
-                    String userName = profile.getName();
                     if (!(model.getCreatedBy().equals(userName))){
                         v.setVisibility(View.GONE);
-
-
                     }
                 }
-                else if(whichButton == "friends_challenges") {
-                    //completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+                else if(whichButton.equals("friends_challenges")) {
+                    if (model.getCreatedBy().equals(userName)){
+                        v.setVisibility(View.GONE);
+                    }
                 }
 
                 TextView tv = (TextView) v.findViewById(R.id.challengeName);

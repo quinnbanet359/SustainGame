@@ -57,7 +57,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity{
     //permissions variables
     public static final int locationFeedback = 0;
-    public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
+    public String permission = Manifest.permission.ACCESS_FINE_LOCATION;
     public String granted = "granted";
     public String denied = "denied";
     public String permissionStatus = granted;
@@ -416,18 +416,18 @@ public void LoginWatcher() {
 
     private void getLocation() {
         // Get the location manager
-        LocationManager locationManager = (LocationManager)
+        final LocationManager locationManager = (LocationManager)
                 context.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
-        String bestProvider = locationManager.getBestProvider(criteria, true);
+        final String bestProvider = locationManager.getBestProvider(criteria, true);
         if (bestProvider!=null) {
             Location location = locationManager.getLastKnownLocation(bestProvider);
             try {
                 lat = location.getLatitude();
                 lon = location.getLongitude();
             } catch (NullPointerException e) {
-                lat = -1.0;
-                lon = -1.0;
+                lat = 38.2527; //hard coded louisville, try 38.0406 for lex
+                lon = 85.7585; //84.5037 for lex
             }
         }
         LocationListener locationListener = new LocationListener() {

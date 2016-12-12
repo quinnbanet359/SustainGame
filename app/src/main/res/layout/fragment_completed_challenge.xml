@@ -18,7 +18,7 @@
         android:dividerHeight="3dp" />
 
     <TextView
-        android:text="Your Completed Challanges"
+        android:text="Completed Challenges"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:id="@+id/completedListTitle"

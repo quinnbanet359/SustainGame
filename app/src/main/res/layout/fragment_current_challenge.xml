@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="Your Current Challenges"
+        android:text="Current Challenges"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:background="@color/Teal"
         android:id="@+id/currentListTitle"

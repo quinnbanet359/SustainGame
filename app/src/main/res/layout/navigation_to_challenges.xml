@@ -13,7 +13,7 @@
         android:layout_weight="1" />
 
     <Button
-            android:text="View Your Friends Challenges"
+            android:text="View Public Challenges"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button4"

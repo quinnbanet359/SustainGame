@@ -32,8 +32,6 @@ public class CompletedChallenge extends Fragment {
     DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
     Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
 
-    double utc_timestamp = System.currentTimeMillis();
-
     //location vars
     String matchCity1 = "New Albany";
     String matchCity2 = "Louisvlle";
@@ -48,12 +46,6 @@ public class CompletedChallenge extends Fragment {
     public static String pictureDetails;
     public static String createdByDetails;
     public static String endDateDetails;
-
-    // firebase
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
-    Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);;
-
     public static String completedClick = "";
 
     public CompletedChallenge() {

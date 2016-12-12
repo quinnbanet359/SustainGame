@@ -31,7 +31,7 @@ import java.util.TimeZone;
 
 public class CreateChallenge extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("Challenges"); //TODO: implement location in
+    DatabaseReference ref = database.getReference("Louisville"); //TODO: implement location in
 
     static long idSubTracker = 129; //129 is current id number, we will increase each new creation
     static long idTracker = 903; //903 is current id number, we will increase each new creation
@@ -85,8 +85,8 @@ public class CreateChallenge extends AppCompatActivity {
 
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
-                EditText endDateDay = (EditText) findViewById(R.id.createEDContent1);
-                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent2);
+                EditText endDateDay = (EditText) findViewById(R.id.createEDContent2);
+                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent1);
                 EditText endDateYear = (EditText) findViewById(R.id.createEDContent3);
                 String enteredChallenge = challenge.getText().toString();
                 String enteredEndDate = endDateDay.getText().toString()+
@@ -147,8 +147,11 @@ public class CreateChallenge extends AppCompatActivity {
                     idTracker++;
                     idSubTracker++;
 
+
                     //after entry, send user back to AuthDashboard
                     Intent intent = new Intent(CreateChallenge.this, AuthDashboard.class);
+                    String whichButton = getIntent().getExtras().getString("WHICH_BUTTON");
+                    intent.putExtra("WHICH_BUTTON", whichButton);
                     startActivity(intent);
 
                     /* FOR REFERENCE:

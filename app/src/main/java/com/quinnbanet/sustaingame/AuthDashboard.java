@@ -20,13 +20,14 @@ public class AuthDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth_dashboard);
-
+        final String whichButton = getIntent().getExtras().getString("WHICH_BUTTON");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabBase);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AuthDashboard.this, CreateChallenge.class);
+                intent.putExtra("WHICH_BUTTON", whichButton);
                 startActivity(intent);
             }
         });

@@ -30,7 +30,7 @@ public class ChallengesDetails extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //initialize TextView objects
         TextView startDateField = (TextView) findViewById(R.id.sdContent);

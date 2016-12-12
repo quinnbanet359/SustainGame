@@ -74,7 +74,7 @@ public class CompletedChallenge extends Fragment {
        final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, completedChallQuery) {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
-                String whichButton = getActivity().getIntent().getExtras().getString("WHICH_BUTTON");
+                final String whichButton = getActivity().getIntent().getExtras().getString("WHICH_BUTTON");
                 final Profile profile = Profile.getCurrentProfile();
                 String userName = profile.getName();
                 if(whichButton.equals("my_challenges")){
@@ -140,6 +140,7 @@ public class CompletedChallenge extends Fragment {
                         Log.d("testListAdapterLog","endDate: "+endDateDetails);
 
                         Intent intent = new Intent(CompletedChallenge.this.getActivity(), ChallengesDetails.class);
+                        intent.putExtra("WHICH_BUTTON", whichButton);
                         startActivity(intent);
                     }
                 });

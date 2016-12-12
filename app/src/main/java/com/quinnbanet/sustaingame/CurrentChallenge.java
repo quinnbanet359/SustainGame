@@ -12,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.facebook.Profile;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,7 +24,6 @@ public class CurrentChallenge extends Fragment {
     double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
-
     Query currentChallQuery = mRef.orderByChild("utcEndDate").startAt(utc_timestamp);
 
     MainActivity mainActivity = new MainActivity();
@@ -64,6 +64,20 @@ public class CurrentChallenge extends Fragment {
         final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, currentChallQuery) {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
+                //based on button click, show auth dashboard with either my or my friends challenges
+                final String whichButton = getActivity().getIntent().getExtras().getString("WHICH_BUTTON");
+                final Profile profile = Profile.getCurrentProfile();
+                String userName = profile.getName();
+                if(whichButton.equals("my_challenges")){
+                    if (!(model.getCreatedBy().equals(userName))){
+                        v.setVisibility(View.GONE);
+                    }
+                }
+                else if(whichButton.equals("friends_challenges")) {
+                    if (model.getCreatedBy().equals(userName)){
+                        v.setVisibility(View.GONE);
+                    }
+                }
                 TextView tv = (TextView) v.findViewById(R.id.challengeName);
                 tv.setText(model.getName());
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,6 +130,7 @@ public class CurrentChallenge extends Fragment {
                         Log.d("testListAdapterLog","endDate: "+endDateDetails);
 
                         Intent intent = new Intent(CurrentChallenge.this.getActivity(), ChallengesDetails.class);
+                        intent.putExtra("WHICH_BUTTON", whichButton);
                         startActivity(intent);
                     }
                 });

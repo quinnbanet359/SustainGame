@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Sustain Game"
         android:textColor="#FFFFFF"
-        android:fontFamily="monospace"
+        android:fontFamily="sans-serif"
         android:layout_marginRight="7dp"
         android:layout_marginLeft="7dp"
         android:textSize="45sp"

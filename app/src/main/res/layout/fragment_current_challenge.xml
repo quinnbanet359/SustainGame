@@ -10,12 +10,16 @@
         android:text="Your Current Challenges"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:background="@color/Teal"
-        android:id="@+id/currentListTitle"/>
+        android:id="@+id/currentListTitle"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/white" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="238dp"
         android:layout_below="@id/currentListTitle"
-        android:id="@+id/currentList"/>
+        android:id="@+id/currentList"
+        android:divider="@color/Teal"
+        android:dividerHeight="2dp" />
 
 </RelativeLayout>

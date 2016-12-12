@@ -6,6 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.LauncherApps;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -43,9 +49,13 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity{
-    //permsions vaiables
+    //permissions variables
     public static final int locationFeedback = 0;
     public String permission = Manifest.permission.ACCESS_COARSE_LOCATION;
     public String granted = "granted";
@@ -62,15 +72,19 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth.AuthStateListener mAuthListener;
     public FirebaseAuth mAuth;
 
+    //GPS
+    public static String usersCity = "";
+    public static double lat;
+    public static double lon;
+    public Context context = this;
 
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
+
         //Every time app is Launched or Resumed Check Permissions
         checkPermission();
-        //logout user on resume
-        FirebaseAuth.getInstance().signOut();
         if (permissionStatus == granted) {
             Log.d("testabc123", "resume granted");
             //do app things
@@ -86,6 +100,19 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         askPermission(); //ask user for location permissions upon first app launch
+
+        getLocation();
+        //GPS
+        Geocoder gcd = new Geocoder(this, Locale.getDefault());
+        try {
+            Log.d("Location",+lat+"long: "+lon);
+            List<Address> addresses = gcd.getFromLocation(lat,lon, 1);
+            usersCity = addresses.get(0).getLocality();
+            Log.d("Location",usersCity);
+        }
+        catch(java.io.IOException e) {
+            e.printStackTrace();
+        }
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
@@ -194,24 +221,32 @@ public class MainActivity extends AppCompatActivity{
     } */
 
 
+    public static String getUsersCity() {
+        return usersCity;
+    }
+
+    public static void setUsersCity(String usersCity) {
+        MainActivity.usersCity = usersCity;
+    }
+
     public void askPermission() {
+        //showPreAlert(); //tell user to accept permission dialog upon first app launch
+        
         // Here, this is the current activity
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
 
             } else {
-                showPreAlert(); //tell user to accept permission dialog upon first app launch
-
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, locationFeedback);
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, locationFeedback);
 
                 // locationFeedback is an
                 // app-defined int constant. The callback method gets the
@@ -318,6 +353,7 @@ public class MainActivity extends AppCompatActivity{
             if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 // permission denied
                 permissionStatus = denied;
+                setContentView(R.layout.permission_denied);
 
             } else {
                 // permission granted
@@ -376,5 +412,50 @@ public void LoginWatcher() {
             Intent intent = new Intent(MainActivity.this,NavigationChallenges.class);
             startActivity(intent);
         }
+    }
+
+    private void getLocation() {
+        // Get the location manager
+        LocationManager locationManager = (LocationManager)
+                context.getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String bestProvider = locationManager.getBestProvider(criteria, true);
+        if (bestProvider!=null) {
+            Location location = locationManager.getLastKnownLocation(bestProvider);
+            try {
+                lat = location.getLatitude();
+                lon = location.getLongitude();
+            } catch (NullPointerException e) {
+                lat = -1.0;
+                lon = -1.0;
+            }
+        }
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                lat = location.getLatitude();
+                lon = location.getLongitude();
+            }
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+            }
+        };
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+                0, locationListener);
+        checkPermission();
+        Log.d("GPS getLocation","lat: "+lat+"long: "+lon);
     }
 }

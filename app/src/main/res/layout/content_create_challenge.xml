@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:id="@+id/errorMessage"
-        android:layout_below="@+id/createBtn"
+        android:layout_below="@+id/rrrMessage"
         android:layout_alignParentStart="true" />
 
     <ImageView
@@ -90,7 +90,7 @@
     <ImageView
         android:layout_width="15dp"
         android:layout_height="15dp"
-        app:srcCompat="@android:color/white"
+        app:srcCompat="@color/Teal"
         android:id="@+id/nameErrorCover"
         android:layout_alignTop="@+id/nameError"
         android:layout_alignParentStart="true" />
@@ -107,7 +107,7 @@
     <ImageView
         android:layout_width="15dp"
         android:layout_height="15dp"
-        app:srcCompat="@android:color/white"
+        app:srcCompat="@color/Teal"
         android:layout_marginEnd="11dp"
         android:id="@+id/endDateErrorCover"
         android:layout_alignParentStart="true"
@@ -196,11 +196,11 @@
         android:text="Reuse  Recycle  Repeat "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/rrrMessage"
         android:textSize="40sp"
         android:fontFamily="cursive"
         android:textColor="@color/colorAccent"
-        android:layout_alignTop="@+id/errorMessage"
+        android:layout_below="@+id/createBtn"
         android:layout_toEndOf="@+id/nameErrorCover" />
 
     <TextView

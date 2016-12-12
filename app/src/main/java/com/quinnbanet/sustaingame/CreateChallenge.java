@@ -34,7 +34,7 @@ public class CreateChallenge extends AppCompatActivity {
     DatabaseReference ref = database.getReference("Louisville"); //TODO: implement location in
 
     static long idSubTracker = 129; //129 is current id number, we will increase each new creation
-    static long idTracker = 903; //903 is current id number, we will increase each new creation
+    long idTracker = 904; //904 is current id number, we will increase each new creation
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +85,8 @@ public class CreateChallenge extends AppCompatActivity {
 
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
-                EditText endDateDay = (EditText) findViewById(R.id.createEDContent2);
-                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateDay = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent2);
                 EditText endDateYear = (EditText) findViewById(R.id.createEDContent3);
                 String enteredChallenge = challenge.getText().toString();
                 String enteredEndDate = endDateDay.getText().toString()+

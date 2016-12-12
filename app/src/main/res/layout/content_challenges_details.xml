@@ -24,7 +24,10 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:paddingBottom="10pt"
+        />
 
     <TextView
         android:text=""
@@ -37,7 +40,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
     <TextView
         android:text="Start Date:"
         android:layout_width="wrap_content"
@@ -48,7 +52,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text=""
@@ -61,7 +66,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
     <TextView
         android:text="End Date:"
         android:layout_width="wrap_content"
@@ -72,7 +78,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text=""
@@ -85,7 +92,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
     <TextView
         android:text="Progress:"
         android:layout_width="wrap_content"
@@ -96,7 +104,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text=""
@@ -109,7 +118,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
     <TextView
         android:text="Created By:"
         android:layout_width="wrap_content"
@@ -120,7 +130,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text=""
@@ -133,7 +144,8 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@android:color/black" />
 
     <ImageView
         android:layout_width="152dp"
@@ -144,10 +156,11 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Reuse  Recycle  Repeat "
+        android:text="Resuse  Recycle  Repeat "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
+        tools:text="Resuse Recycle Repeat "
         android:textSize="40sp"
         android:fontFamily="cursive"
         android:textColor="@color/colorAccent"

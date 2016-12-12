@@ -85,8 +85,8 @@ public class CreateChallenge extends AppCompatActivity {
 
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
-                EditText endDateDay = (EditText) findViewById(R.id.createEDContent2);
-                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateDay = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent2);
                 EditText endDateYear = (EditText) findViewById(R.id.createEDContent3);
                 String enteredChallenge = challenge.getText().toString();
                 String enteredEndDate = endDateDay.getText().toString()+

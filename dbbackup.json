@@ -1,0 +1,129 @@
+{
+  "Lexington" : {
+    "001" : {
+      "createdBy" : "Admin",
+      "endDate" : "01/01/17",
+      "id" : 129,
+      "name" : "New Lou Challenge",
+      "picture" : "some url",
+      "progress" : "progress",
+      "startDate" : "12/11/16",
+      "utcEndDate" : 1483314809000,
+      "utcStartDate" : 1481500409000
+    },
+    "002" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/11/17",
+      "id" : 128,
+      "name" : "Take a shower in less than 10 minutes",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "12/25/16",
+      "utcEndDate" : 1484119956000,
+      "utcStartDate" : 1482651156000
+    },
+    "003" : {
+      "createdBy" : "Sara Attarzadeh",
+      "endDate" : "12",
+      "id" : 130,
+      "name" : "shower in 5 mins",
+      "picture" : "picture",
+      "progress" : "progress",
+      "startDate" : "121116",
+      "utcEndDate" : 0,
+      "utcStartDate" : 0
+    }
+  },
+  "Louisville" : {
+    "897" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/11/17",
+      "id" : 124,
+      "name" : "Recycle 10 Items",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "12/25/16",
+      "utcEndDate" : 1484092800000,
+      "utcStartDate" : 1482624000000
+    },
+    "898" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/15/17",
+      "id" : 123,
+      "name" : "Recycle 20 items",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "12/02/16",
+      "utcEndDate" : 1484438400000,
+      "utcStartDate" : 1480636800000
+    },
+    "899" : {
+      "createdBy" : "Yahoo",
+      "endDate" : "122616",
+      "id" : 125,
+      "name" : "Invite FB Friends list to app",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "111716",
+      "utcEndDate" : 1482796409000,
+      "utcStartDate" : 1479426809000
+    },
+    "900" : {
+      "createdBy" : "Admin",
+      "endDate" : "10/22/17",
+      "id" : 126,
+      "name" : "Discover 5 sustainabilty clubs",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "11/25/16",
+      "utcEndDate:" : 1508653956000,
+      "utcStartDate" : 1480059156000
+    },
+    "901" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/01/17",
+      "id" : 127,
+      "name" : "Buy a solar panel for you home",
+      "picture" : "some url",
+      "progress" : "new challange",
+      "startDate" : "12/09/16",
+      "utcEndDate" : 1483255956000,
+      "utcStartData" : 1481268756000
+    },
+    "902" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/11/17",
+      "id" : 128,
+      "name" : "Take a shower in less than 10 minutes",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "12/25/16",
+      "utcEndDate" : 1484119956000,
+      "utcStartDate" : 1482651156000
+    },
+    "903" : {
+      "createdBy" : "Sara Attarzadeh",
+      "endDate" : "12",
+      "id" : 130,
+      "name" : "shower in 5 mins",
+      "picture" : "picture",
+      "progress" : "progress",
+      "startDate" : "121116",
+      "utcEndDate" : 0,
+      "utcStartDate" : 0
+    }
+  },
+  "invalid db ref" : {
+    "897" : {
+      "createdBy" : "Admin",
+      "endDate" : "1/11/17",
+      "id" : 124,
+      "name" : "**ERROR** || Issue with Location",
+      "picture" : "some url",
+      "progress" : "",
+      "startDate" : "12/25/16",
+      "utcEndDate" : 1484092800000,
+      "utcStartDate" : 1482624000000
+    }
+  }
+}

@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity{
                                 "Auth Token: "
                                 + loginResult.getAccessToken().getToken()
                 );*/
-                Intent intent = new Intent(MainActivity.this, AuthDashboard.class);
+                Intent intent = new Intent(MainActivity.this, NavigationChallenges.class);
                 startActivity(intent);
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity{
                 });
     }
 public void iwasclicked(View view) {
-    Intent intent = new Intent(MainActivity.this, AuthDashboard.class);
+    Intent intent = new Intent(MainActivity.this, NavigationChallenges.class);
     startActivity(intent);
 }
 public void LoginWatcher() {
@@ -372,7 +372,7 @@ public void LoginWatcher() {
         //user is logged in, send them to AuthDashboard
         {
             Log.d("blahblah", "else");
-            Intent intent = new Intent(MainActivity.this,AuthDashboard.class);
+            Intent intent = new Intent(MainActivity.this,NavigationChallenges.class);
             startActivity(intent);
         }
     }

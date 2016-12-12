@@ -60,6 +60,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.quinnbanet.sustaingame.AuthDashboard" />
         </activity>
+        <activity android:name=".NavigationChallenges"></activity>
     </application>
 
 </manifest>

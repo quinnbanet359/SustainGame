@@ -11,14 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.quinnbanet.sustaingame.CreateChallenge"
-    tools:showIn="@layout/activity_create_challenge">
-
-    <TextView
-        android:text="Create a new challenge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createTitle"
-        android:textSize="24sp" />
+    tools:showIn="@layout/activity_create_challenge"
+    android:background="@color/Teal"
+    >
 
     <TextView
         android:text="Challenge:"
@@ -28,7 +23,9 @@
         android:layout_below="@+id/createTitle"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="30dp"/>
+        android:layout_marginLeft="30dp"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text="Start Date:"
@@ -37,7 +34,9 @@
         android:id="@+id/createSDTitle"
         android:layout_marginTop="24dp"
         android:layout_below="@+id/createChallengeTitle"
-        android:layout_alignStart="@+id/createChallengeTitle" />
+        android:layout_alignStart="@+id/createChallengeTitle"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,22 +50,14 @@
         android:editable="false"/>
 
     <TextView
-        android:text="End Date: \n (MM/DD/YY)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEDTitle"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/createSDTitle"
-        android:layout_alignStart="@+id/createChallengeTitle" />
-
-    <TextView
         android:text="Created By:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/createCreatedByTitle"
         android:layout_marginTop="24dp"
         android:layout_below="@+id/createEDTitle"
-        android:layout_alignStart="@+id/createEDTitle" />
+        android:layout_alignStart="@+id/createEDTitle"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -189,5 +180,38 @@
         android:layout_marginLeft="15dp"
         android:layout_above="@+id/createCreatedByContent"
         android:layout_alignStart="@+id/createBtn" />
+
+    <TextView
+        android:text="End Date: \n (MM/DD/YY)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createEDTitle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/createSDTitle"
+        android:layout_alignStart="@+id/createSDTitle"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:text="Reuse  Recycle  Repeat "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="40sp"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorAccent"
+        android:layout_alignTop="@+id/errorMessage"
+        android:layout_toEndOf="@+id/nameErrorCover" />
+
+    <TextView
+        android:text="Create a New Challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createTitle"
+        android:textSize="22sp"
+        android:fontFamily="monospace"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

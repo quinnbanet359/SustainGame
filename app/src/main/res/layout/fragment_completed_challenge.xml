@@ -5,18 +5,6 @@
     tools:context=".CompletedChallenge">
 
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:id="@+id/completedList"
-        android:layout_below="@+id/completedListTitle"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:divider="@color/Teal"
-        android:dividerHeight="3dp" />
-
     <TextView
         android:text="Completed Challenges"
         android:layout_width="wrap_content"
@@ -32,5 +20,17 @@
         android:fontFamily="monospace"
         android:textSize="22sp"
         android:textColor="@android:color/white" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:id="@+id/completedList"
+        android:divider="@color/Teal"
+        android:dividerHeight="3dp"
+        android:layout_alignTop="@+id/completedListTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp" />
 
 </RelativeLayout>

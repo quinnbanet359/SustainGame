@@ -7,7 +7,9 @@
     tools:context="com.quinnbanet.sustaingame.AuthDashboard">
 
 
-    <include layout="@layout/current_main"/>
+    <include layout="@layout/current_main"
+        android:visibility="visible" />
+
     <include layout="@layout/completed_main" />
 
 

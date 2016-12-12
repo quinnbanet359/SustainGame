@@ -11,7 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.quinnbanet.sustaingame.ChallengesDetails"
-    tools:showIn="@layout/activity_challenges_details">
+    tools:showIn="@layout/activity_challenges_details"
+    android:background="@color/Teal">
 
     <TextView
         android:text="Challenge:"
@@ -23,7 +24,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:text=""
@@ -36,7 +37,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
     <TextView
         android:text="Start Date:"
         android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:text=""
@@ -60,7 +61,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
     <TextView
         android:text="End Date:"
         android:layout_width="wrap_content"
@@ -71,7 +72,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:text=""
@@ -84,7 +85,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
     <TextView
         android:text="Progress:"
         android:layout_width="wrap_content"
@@ -95,7 +96,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:text=""
@@ -108,7 +109,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
     <TextView
         android:text="Created By:"
         android:layout_width="wrap_content"
@@ -119,7 +120,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:text=""
@@ -132,7 +133,7 @@
         android:layout_marginTop="15dp"
         android:lineSpacingExtra="8sp"
         android:fontFamily="monospace"
-        android:textSize="24sp" />
+        android:textSize="14sp" />
 
     <ImageView
         android:layout_width="152dp"
@@ -140,6 +141,18 @@
         app:srcCompat="@drawable/lightbulb"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Reuse  Recycle  Repeat "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="40sp"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/createdByTitle"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

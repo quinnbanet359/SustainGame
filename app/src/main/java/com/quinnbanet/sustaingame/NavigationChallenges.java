@@ -27,6 +27,18 @@ public class NavigationChallenges extends AppCompatActivity {
                 // Start NewActivity.class
                 Intent myIntent = new Intent(NavigationChallenges.this,
                         AuthDashboard.class);
+                myIntent.putExtra("WHICH_BUTTON","my_challenges");
+                startActivity(myIntent);
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(NavigationChallenges.this,
+                        AuthDashboard.class);
+                myIntent.putExtra("WHICH_BUTTON","friends_challenges");
                 startActivity(myIntent);
             }
         });

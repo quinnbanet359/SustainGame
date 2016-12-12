@@ -22,7 +22,7 @@ public class CurrentChallenge extends Fragment {
     View view;
     double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
+    DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
     Query currentChallQuery = mRef.orderByChild("utcEndDate").startAt(utc_timestamp);
 
     public static String idDetails;

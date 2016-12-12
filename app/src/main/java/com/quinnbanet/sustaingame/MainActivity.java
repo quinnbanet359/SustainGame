@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity{
         loginButton.setReadPermissions("user_friends");
         loginButton.setReadPermissions("public_profile");
         loginButton.setReadPermissions("email");
+        //loginButton.setReadPermissions("read_custom_friendslists");
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override

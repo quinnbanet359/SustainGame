@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.facebook.Profile;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,7 +28,7 @@ public class CompletedChallenge extends Fragment {
     View view;
     double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference mRef = firebaseDatabase.getReference().child("Challenges");
+    DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
     Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
 
 
@@ -46,10 +51,28 @@ public class CompletedChallenge extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
+
+
+
+
         final ListView lv = (ListView) view.findViewById(R.id.completedList);
        final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, completedChallQuery) {
             @Override
             protected void populateView(View v, final Challenges model, int position) {
+                String whichButton = getActivity().getIntent().getExtras().getString("WHICH_BUTTON");
+                if(whichButton.equals("my_challenges")){
+                    final Profile profile = Profile.getCurrentProfile();
+                    String userName = profile.getName();
+                    if (!(model.getCreatedBy().equals(userName))){
+                        v.setVisibility(View.GONE);
+
+
+                    }
+                }
+                else if(whichButton == "friends_challenges") {
+                    //completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+                }
+
                 TextView tv = (TextView) v.findViewById(R.id.challengeName);
                 tv.setText(model.getName());
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,6 +130,7 @@ public class CompletedChallenge extends Fragment {
                 });
 
             }
+
         };
         lv.setAdapter(la);
         return view;

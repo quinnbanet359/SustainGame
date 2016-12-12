@@ -23,7 +23,14 @@ public class CurrentChallenge extends Fragment {
     double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
+
     Query currentChallQuery = mRef.orderByChild("utcEndDate").startAt(utc_timestamp);
+
+    MainActivity mainActivity = new MainActivity();
+    String usersCity = mainActivity.getUsersCity();
+    String matchCity1 = "New Albany";
+    String matchCity2 = "Louisvlle";
+    String matchCity3 = "Lexington";
 
     public static String idDetails;
     public static String startDateDetails;
@@ -41,8 +48,18 @@ public class CurrentChallenge extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_current_challenge, container, false);
+       /* if (usersCity.matches(matchCity1) || usersCity.matches(matchCity2)) {
+            DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
+            Query currentChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+            Log.d("Location","(current)lou, got to if");
+        }
+        else {
+            DatabaseReference mRef = firebaseDatabase.getReference().child("Lexington");
+            Query currentChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+            Log.d("Location","lex, got to else");
+        }*/
 
+        view = inflater.inflate(R.layout.fragment_current_challenge, container, false);
         final ListView lv = (ListView) view.findViewById(R.id.currentList);
         final ListAdapter la = new FirebaseListAdapter<Challenges>(getActivity(), Challenges.class, R.layout.challenges_item_layout, currentChallQuery) {
             @Override

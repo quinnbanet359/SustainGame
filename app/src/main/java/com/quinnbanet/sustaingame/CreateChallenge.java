@@ -1,6 +1,9 @@
 package com.quinnbanet.sustaingame;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,24 +14,27 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.facebook.Profile;
+import com.google.firebase.auth.api.model.StringList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
 public class CreateChallenge extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("Challenges");
-    DatabaseReference usersRef = ref.child("users");
-    Map<String, Challenges> createChallenge = new HashMap<String, Challenges>();
+    DatabaseReference ref = database.getReference("Challenges"); //TODO: implement location in
+
     static long idSubTracker = 129; //129 is current id number, we will increase each new creation
-    static long idTracker = 903;
+    static long idTracker = 903; //903 is current id number, we will increase each new creation
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,18 @@ public class CreateChallenge extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
         final String currentDate= sdf.format(new Date());
         startDate.setText(currentDate);
-        Log.d("setLogs",currentDate);
+        Log.d("setLogs","currentDate: "+currentDate);
+
+        //convert current date from dd/mm/yy to ddmmyy
+        final java.util.Date date= new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH); // zero based so +1
+            month = month +1;
+        int year = cal.get(Calendar.YEAR);
+        year = year - 2000; // turn 2016 into 16, should work for the next 84 years
+        final String enteredCurrentDate = ""+month+day+year;
 
         TextView userName = (TextView) findViewById(R.id.createCreatedByContent);
         final Profile profile = Profile.getCurrentProfile();
@@ -68,9 +85,13 @@ public class CreateChallenge extends AppCompatActivity {
 
                 //validate fields
                 EditText challenge = (EditText) findViewById(R.id.createChallengeContent);
-                EditText endDate = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateDay = (EditText) findViewById(R.id.createEDContent1);
+                EditText endDateMonth = (EditText) findViewById(R.id.createEDContent2);
+                EditText endDateYear = (EditText) findViewById(R.id.createEDContent3);
                 String enteredChallenge = challenge.getText().toString();
-                String enteredEndDate = endDate.getText().toString();
+                String enteredEndDate = endDateDay.getText().toString()+
+                                        endDateMonth.getText().toString()+
+                                        endDateYear.getText().toString();
                 Log.d("getLogs",enteredChallenge);
                 Log.d("getLogs",enteredEndDate);
 
@@ -79,59 +100,56 @@ public class CreateChallenge extends AppCompatActivity {
                 String specialReturns = ""; //TODO: look up and fill with java special return chars in string
 
                 if (enteredChallenge.isEmpty()) { //TODO: if or.contains special chars
-                    Log.d("ifLog","got to if");
                     challengeErrorCover.setVisibility(View.INVISIBLE);
                     errorMessage.setText("Error with Challenge Name Field \n Be sure to enter text and ensure there are no special characters");
                 }
                 else if (enteredEndDate.isEmpty()) { //TODO: if or.contains special chars
-                    Log.d("ifLog","got to else if");
                     endDateErrorCover.setVisibility(View.INVISIBLE);
                     errorMessage.setText("Enter Date as 12/10/16 \n Error with End Date Field \n Be sure to enter text and ensure there are no special characters");
                 }
                 else {
-                    //TODO: Send info to firebase
-                    double utcStart = System.currentTimeMillis();
+                    long utcStart = System.currentTimeMillis();
                     String utcEndString;
-                    double utcEnd = 0;
+                    long utcEnd = 0;
+                    
+                    //user entered date comes in as 121116 || change to 12/11/16
+                    int yearConvert = Integer.parseInt(endDateYear.getText().toString());
+                    yearConvert = yearConvert+2000; // should work for 84 more years
+                    String convertedEnteredEndDate = endDateMonth.getText().toString() + "/" +
+                                                    endDateDay.getText().toString() + "/" + yearConvert;
 
                     //convert string to Date
-                    DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-                    Date endingDate;
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
                     try {
-                        endingDate = df.parse(enteredEndDate);
-                        //convert date to string utc
-                        SimpleDateFormat formatter = new SimpleDateFormat();
-                        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-                        utcEndString = formatter.format(endingDate);
-                        //convert string utc to double
-                        utcEnd = Double.parseDouble(utcEndString);
-                    } catch (ParseException e) {
+                        Date date = formatter.parse(convertedEnteredEndDate);
+                    }
+                    catch (ParseException e) {
                         e.printStackTrace();
                     }
+                    String dateFormattedinUTC;
+                    SimpleDateFormat lv_formatter = new SimpleDateFormat();
+                    lv_formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    dateFormattedinUTC = lv_formatter.format(date);
+                    String dateFormattedinPOSTUTC = convertedEnteredEndDate + " 01:00:00";
+                    Log.d("firebaseTestLog1","TestUTCDATE:    "+dateFormattedinPOSTUTC);
 
+                    SimpleDateFormat utcFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                    try {
+                        utcEnd = utcFormat.parse(dateFormattedinPOSTUTC).getTime() / 1000;
+                    }
+                    catch (ParseException e){
+                        e.printStackTrace();
+                    }
+                    Log.d("firebaseTestLog","utc start: "+ utcStart + " utcEnd: "+ utcEnd);
 
-                    //utc start and end throwing error bc of decimal . in the double
-                    // round to nearest whole number
-                    double roundedUTCStart = (double) Math.round(utcStart);
-                    double roundedUTCEnd = (double) Math.round(utcEnd); //round does not remove .0 from double
-                    long fake1 = 0;
-                    long fake2= 0;
-
-                    Log.d("firebaseTestLog","utc start: "+ fake1 + " utcEnd: "+ fake2);
-                    Log.d("firebaseTestLog", idSubTracker +1+""+""+enteredChallenge+"121016"+ profile.getName()+ enteredEndDate+ fake1+ fake2);
-
-
-                    Challenges challenges = new Challenges(idSubTracker +1,"121116","progress",enteredChallenge,"picture", profile.getName(), enteredEndDate, fake1, fake2);
+                    Challenges challenges = new Challenges(idSubTracker +1,enteredCurrentDate,"progress",enteredChallenge,"picture", profile.getName(), enteredEndDate, utcStart, utcEnd);
                     ref.child(""+idTracker).setValue(challenges);
                     idTracker++;
                     idSubTracker++;
 
-                    //TODO: it puts data in the db as challanges vs as an id, we need to assign it in the db as an id
-
                     //after entry, send user back to AuthDashboard
                     Intent intent = new Intent(CreateChallenge.this, AuthDashboard.class);
                     startActivity(intent);
-
 
                     /* FOR REFERENCE:
                     private long id;
@@ -142,9 +160,7 @@ public class CreateChallenge extends AppCompatActivity {
                     private String createdBy;
                     private String endDate;
                     private double utcStartDate;
-                    private double utcEndDate;
-                 */
-
+                    private double utcEndDate; */
                 }
             }
         });

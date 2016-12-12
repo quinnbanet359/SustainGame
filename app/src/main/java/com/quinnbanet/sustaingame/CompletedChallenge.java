@@ -26,12 +26,18 @@ import java.util.Date;
 
 public class CompletedChallenge extends Fragment {
     View view;
+
     double utc_timestamp = System.currentTimeMillis();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
     Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
 
-
+    //location vars
+    String matchCity1 = "New Albany";
+    String matchCity2 = "Louisvlle";
+    String matchCity3 = "Lexington";
+    MainActivity mainActivity = new MainActivity();
+    String usersCity = mainActivity.getUsersCity();
 
     public static String idDetails;
     public static String startDateDetails;
@@ -40,7 +46,6 @@ public class CompletedChallenge extends Fragment {
     public static String pictureDetails;
     public static String createdByDetails;
     public static String endDateDetails;
-
     public static String completedClick = "";
 
     public CompletedChallenge() {
@@ -50,6 +55,16 @@ public class CompletedChallenge extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+       /* if (usersCity.matches(matchCity1) || usersCity.matches(matchCity2)) {
+            DatabaseReference mRef = firebaseDatabase.getReference().child("Louisville");
+            Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+            Log.d("Location","(completed)lou, got to if");
+        }
+        else {
+            DatabaseReference mRef = firebaseDatabase.getReference().child("Lexington");
+            Query completedChallQuery = mRef.orderByChild("utcEndDate").endAt(utc_timestamp);
+            Log.d("Location","lex, got to else");
+        }*/
         view = inflater.inflate(R.layout.fragment_completed_challenge, container, false);
 
 
@@ -199,4 +214,5 @@ public class CompletedChallenge extends Fragment {
     public void setCompletedClick(String completedClick) {
         this.completedClick = completedClick;
     }
+
 }
